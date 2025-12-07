@@ -35,9 +35,9 @@ const Header: React.FC = () => {
               className="flex items-center group focus:outline-none"
               aria-label="CIGRE Brasil Home"
             >
-              {/* Logo CIGRE Brasil - Caminho atualizado para pasta Imgs */}
+              {/* Logo CIGRE Brasil - Caminho absoluto para pasta public */}
               <img 
-                src="/Imgs/cigre_brazil_pos_rgb.png" 
+                src="./Imgs/cigre_brazil_pos_rgb.png" 
                 alt="Logo CIGRE Brasil" 
                 className="h-12 w-auto mr-3"
               />

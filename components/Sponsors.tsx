@@ -1,6 +1,10 @@
 
 import React from 'react';
 
+// Using static paths from public/assets
+const hitachiLogo = '/assets/Hitachi_Global_Logo_Black_PANTONE.png';
+const cigreLogo = '/assets/cigre_brazil_pos_rgb.png';
+
 const Sponsors: React.FC = () => {
   return (
     <section id="patrocinio" className="py-24 bg-gray-50 scroll-mt-24 relative overflow-hidden">
@@ -29,12 +33,12 @@ const Sponsors: React.FC = () => {
                  {/* HITACHI Logo Card */}
                  <div className="group relative w-full max-w-sm">
                     {/* Card Limpo */}
-                    <div className="bg-white rounded-2xl p-10 flex items-center justify-center h-48 w-full shadow-lg hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-1 border border-gray-100">
-                        {/* Imagem do Logo Hitachi - Caminho atualizado para Imgs */}
+                    <div className="bg-white rounded-2xl p-10 flex items-center justify-center h-48 w-full shadow-lg hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-1 border border-gray-100 relative">
                         <img 
-                            src="/Imgs/Hitachi_Global_Logo_Black_PANTONE.png" 
+                            src={hitachiLogo}
                             alt="Hitachi Energy" 
-                            className="w-full h-auto max-h-16 group-hover:scale-110 transition-transform duration-500"
+                            className="w-full h-auto max-h-16 group-hover:scale-110 transition-transform duration-500 object-contain"
+                            onError={(e) => e.currentTarget.style.opacity = '0.3'}
                         />
                     </div>
                  </div>
@@ -54,12 +58,12 @@ const Sponsors: React.FC = () => {
             <div className="flex flex-wrap justify-center gap-12">
                  {/* CIGRE Logo Card */}
                  <div className="group relative w-full max-w-sm">
-                    <div className="bg-white rounded-2xl p-10 flex items-center justify-center h-40 w-full shadow-lg hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-1 border border-gray-100">
-                        {/* Imagem do Logo CIGRE - Caminho atualizado para Imgs */}
+                    <div className="bg-white rounded-2xl p-10 flex items-center justify-center h-40 w-full shadow-lg hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-1 border border-gray-100 relative">
                         <img 
-                            src="/Imgs/cigre_brazil_pos_rgb.png" 
+                            src={cigreLogo}
                             alt="CIGRE Brasil" 
-                            className="w-full h-auto max-h-16 group-hover:scale-110 transition-transform duration-500"
+                            className="w-full h-auto max-h-16 group-hover:scale-110 transition-transform duration-500 object-contain"
+                            onError={(e) => e.currentTarget.style.opacity = '0.3'}
                         />
                     </div>
                  </div>

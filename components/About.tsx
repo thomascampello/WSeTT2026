@@ -4,6 +4,9 @@ import Modal from './Modal';
 import { MOTIVATION_TEXT, COMMITTEE_TEXT, CEB4_COORDINATION } from '../constants';
 import { TeamSlider } from './CommitteeCarousel';
 
+// Using static path from public/assets
+const coverImage = '/assets/b4_cover.jpg';
+
 const About: React.FC = () => {
   const [modalContent, setModalContent] = useState<{title: string, body: React.ReactNode} | null>(null);
 
@@ -50,7 +53,7 @@ const About: React.FC = () => {
     <section id="sobre" className="py-24 bg-white scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
         
-        {/* SECTION 1: SOBRE O EVENTO (Texto Esquerda / Imagem Direita) */}
+        {/* SECTION 1: SOBRE O EVENTO */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="order-1">
                 <div className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-cigre-green uppercase bg-green-50 rounded-full">
@@ -84,16 +87,19 @@ const About: React.FC = () => {
             </div>
         </div>
 
-        {/* SECTION 2: CONHEÇA O COMITÊ (Imagem Esquerda / Texto Direita) */}
+        {/* SECTION 2: CONHEÇA O COMITÊ */}
         <div id="conheca-comite" className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center scroll-mt-24">
              <div className="order-2 lg:order-1 relative group">
                 <div className="absolute -inset-4 bg-gradient-to-r from-cigre-accent to-cyan-600 rounded-2xl opacity-20 group-hover:opacity-40 blur-lg transition duration-500"></div>
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                     {/* Imagem atualizada para o arquivo na pasta Imgs */}
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-gray-100 flex items-center justify-center min-h-[300px]">
                      <img 
-                        src="/Imgs/b4_cover.png" 
-                        alt="Capa Brochure CIGRE B4" 
+                        src={coverImage}
+                        alt="Capa Brochure CIGRE B4"
                         className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                          console.error('Cover image failed:', coverImage);
+                        }}
                     />
                 </div>
             </div>

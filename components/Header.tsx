@@ -4,9 +4,11 @@ import React, { useState } from 'react';
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Using static path from public/assets
+  const logoCigre = '/assets/cigre_brazil_pos_rgb.png';
+
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // Updated link structure and order
   const navLinks = [
     { name: 'Sobre', href: '#sobre' },
     { name: 'Comitê B4', href: '#conheca-comite' },
@@ -35,15 +37,15 @@ const Header: React.FC = () => {
               className="flex items-center group focus:outline-none"
               aria-label="CIGRE Brasil Home"
             >
-              {/* Logo CIGRE Brasil - Caminho absoluto para pasta public */}
               <img 
-                src="./Imgs/cigre_brazil_pos_rgb.png" 
+                src={logoCigre} 
                 alt="Logo CIGRE Brasil" 
-                className="h-12 w-auto mr-3"
+                className="h-12 w-auto mr-3 object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none'; // Hide if fails
+                  console.error('Logo failed to load:', logoCigre);
+                }}
               />
-              <span className="text-cigre-green font-bold text-xl tracking-tighter hidden sm:block">
-                Brasil
-              </span>
             </button>
           </div>
           
@@ -79,7 +81,9 @@ const Header: React.FC = () => {
               onClick={toggleMenu}
               className="text-gray-600 hover:text-cigre-green focus:outline-none"
             >
-              <img src="https://img.icons8.com/ios-filled/50/000000/menu--v1.png" alt="Menu" className="h-6 w-6" />
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
             </button>
           </div>
         </div>

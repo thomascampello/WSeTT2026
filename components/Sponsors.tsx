@@ -46,7 +46,7 @@ const Sponsors: React.FC = () => {
             <div className="flex items-center justify-center gap-4 mb-10">
                 <div className="h-[1px] w-12 bg-gray-300"></div>
                 <h3 className="text-xl font-bold text-gray-500 uppercase tracking-[0.2em]">
-                    Apoio
+                    Realização
                 </h3>
                 <div className="h-[1px] w-12 bg-gray-300"></div>
             </div>

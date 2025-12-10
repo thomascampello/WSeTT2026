@@ -90,7 +90,7 @@ const About: React.FC = () => {
                 <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                      {/* Imagem atualizada para o arquivo na pasta Imgs */}
                      <img 
-                        src="/Imgs/b4_cover.jpg"
+                        src="/Imgs/b4_capa.jpg"
                         alt="Capa Brochure CIGRE B4" 
                         className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     />

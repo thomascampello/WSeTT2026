@@ -85,14 +85,14 @@ const About: React.FC = () => {
 
         {/* SECTION 2: CONHEÇA O COMITÊ (Imagem Esquerda / Texto Direita) */}
         <div id="conheca-comite" className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center scroll-mt-24">
-             <div className="order-2 lg:order-1 relative group">
-                <div className="absolute -inset-4 bg-gradient-to-r from-cigre-accent to-cyan-600 rounded-2xl opacity-20 group-hover:opacity-40 blur-lg transition duration-500"></div>
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                     {/* Imagem atualizada para o arquivo na pasta Imgs */}
+             {/* Imagem redimensionada para alinhar com o texto (Organização -> Saiba Mais) */}
+             <div className="order-2 lg:order-1 relative group flex justify-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-cigre-accent to-cyan-600 rounded-2xl opacity-20 group-hover:opacity-40 blur-lg transition duration-500 transform scale-75"></div>
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl max-w-[280px] lg:max-w-[320px]">
                      <img 
                         src="/Imgs/b4_capa.jpg"
                         alt="Capa Brochure CIGRE B4" 
-                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                        className="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-700"
                     />
                 </div>
             </div>

@@ -41,9 +41,6 @@ const Header: React.FC = () => {
                 alt="Logo CIGRE Brasil" 
                 className="h-12 w-auto mr-3"
               />
-              <span className="text-cigre-green font-bold text-xl tracking-tighter hidden sm:block">
-                Brasil
-              </span>
             </button>
           </div>
           

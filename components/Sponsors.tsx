@@ -212,30 +212,29 @@ const Sponsors: React.FC = () => {
       label: 'Patrocínio Ouro',
       badgeColor: 'bg-yellow-100 text-yellow-800 border-yellow-200',
       logos: [1, 2, 3].map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })),
-      imgClass: 'h-10 md:h-12'
+      imgClass: '' // Classe específica removida aqui pois será controlada pelo container
     },
     {
       id: 'silver',
       label: 'Patrocínio Prata',
       badgeColor: 'bg-gray-100 text-gray-700 border-gray-200',
       logos: [1, 2, 3].map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })),
-      imgClass: 'h-9 md:h-10 opacity-80'
+      imgClass: 'opacity-80'
     },
     {
       id: 'bronze',
       label: 'Patrocínio Bronze',
       badgeColor: 'bg-orange-100 text-orange-800 border-orange-200',
       logos: [1, 2].map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })),
-      imgClass: 'h-7 md:h-8 opacity-70'
+      imgClass: 'opacity-70'
     }
-    // Organização removida do marquee conforme solicitado
   ];
 
   // Componente que renderiza a sequência completa (Inline)
   const MarqueeContent = () => (
-    <div className="flex items-center gap-8 md:gap-12 px-4">
+    <div className="flex items-center gap-4 md:gap-8 px-4">
       {groups.map((group) => (
-        <div key={group.id} className="flex items-center gap-6 md:gap-8 shrink-0">
+        <div key={group.id} className="flex items-center gap-4 md:gap-6 shrink-0">
           {/* Badge do Grupo (viaja junto com os logos) */}
           <span className={`
             px-3 py-1.5 md:px-4 md:py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border whitespace-nowrap shadow-sm
@@ -244,20 +243,24 @@ const Sponsors: React.FC = () => {
             {group.label}
           </span>
           
-          {/* Logos do Grupo */}
-          <div className="flex items-center gap-8 md:gap-12">
+          {/* Logos do Grupo - Envoltos em containers fixos para evitar sobreposição */}
+          <div className="flex items-center gap-4">
             {group.logos.map((logo, idx) => (
-               <img 
+               <div 
                  key={`${group.id}-${logo.id}-${idx}`}
-                 src={logo.src}
-                 alt={logo.alt}
-                 className={`${group.imgClass} w-auto object-contain shrink-0`}
-               />
+                 className="flex items-center justify-center shrink-0 w-24 h-10 md:w-32 md:h-12"
+               >
+                   <img 
+                     src={logo.src}
+                     alt={logo.alt}
+                     className={`max-w-full max-h-full object-contain ${group.imgClass}`}
+                   />
+               </div>
             ))}
           </div>
           
           {/* Divisor Visual (opcional, para separar tiers) */}
-          <div className="w-px h-8 bg-gray-200 hidden md:block"></div>
+          <div className="w-px h-8 bg-gray-200 hidden md:block ml-2"></div>
         </div>
       ))}
     </div>

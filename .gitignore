@@ -1,3 +1,4 @@
+
 # Logs
 logs
 *.log
@@ -27,3 +28,6 @@ dist-ssr
 # Environment variables
 .env
 .env.*
+
+# Media assets
+public/Imgs

@@ -2,10 +2,32 @@
 import React from 'react';
 
 const Sponsors: React.FC = () => {
-  // Dados simulados para os patrocinadores usando a logo da Hitachi conforme solicitado
+  // Dados simulados
   const goldSponsors = [1, 2, 3];
   const silverSponsors = [1, 2, 3];
   const bronzeSponsors = [1, 2];
+
+  // Preparar lista unificada para o Ticker com metadados de categoria
+  const tickerItems = [
+    ...goldSponsors.map(id => ({ id, type: 'gold' as const })),
+    // Separador visual (opcional, ou apenas a mudança de tamanho)
+    ...silverSponsors.map(id => ({ id, type: 'silver' as const })),
+    ...bronzeSponsors.map(id => ({ id, type: 'bronze' as const })),
+  ];
+
+  const getTickerStyle = (type: 'gold' | 'silver' | 'bronze') => {
+    switch (type) {
+        case 'gold':
+            // Ouro: Maior, colorido sempre, mais destaque
+            return "h-12 sm:h-16 w-auto grayscale-0 opacity-100 mx-8 sm:mx-12 drop-shadow-sm";
+        case 'silver':
+            // Prata: Médio, grayscale inicial
+            return "h-8 sm:h-10 w-auto grayscale opacity-80 hover:grayscale-0 hover:opacity-100 mx-6 sm:mx-8";
+        case 'bronze':
+            // Bronze: Pequeno, grayscale, menos opacidade
+            return "h-6 sm:h-7 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 mx-4 sm:mx-6";
+    }
+  };
 
   return (
     <>
@@ -149,46 +171,50 @@ const Sponsors: React.FC = () => {
       </section>
 
       {/* BARRA FIXA DE PATROCINADORES (Ticker / Marquee) */}
-      <div className="fixed bottom-0 left-0 w-full z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] h-16 sm:h-20 flex items-center overflow-hidden">
-        <div className="flex items-center absolute left-0 bg-white/95 z-10 h-full px-4 shadow-[5px_0_10px_rgba(255,255,255,1)]">
-            <span className="text-xs font-bold text-gray-500 uppercase tracking-widest whitespace-nowrap">Apoio:</span>
+      <div className="fixed bottom-0 left-0 w-full z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] h-20 sm:h-24 flex items-center overflow-hidden">
+        <div className="flex items-center absolute left-0 bg-white/95 z-10 h-full px-6 shadow-[5px_0_10px_rgba(255,255,255,1)]">
+            <div className="flex flex-col">
+                <span className="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Nossos</span>
+                <span className="text-sm font-bold text-cigre-green uppercase tracking-wider whitespace-nowrap">Patrocinadores</span>
+            </div>
         </div>
         
-        {/* Container da animação */}
-        <div className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-            <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
-                {/* Repetir logos para efeito de loop infinito */}
-                {[...goldSponsors, ...silverSponsors, ...goldSponsors, ...silverSponsors].map((id, idx) => (
-                    <li key={idx}>
+        {/* Container da animação - Ajustado tempo para 60s (mais lento) */}
+        <div className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_160px,_black_calc(100%-128px),transparent_100%)] pl-32 md:pl-40">
+            <ul className="flex items-center justify-center md:justify-start animate-infinite-scroll">
+                {/* Lista original organizada: Ouro -> Prata -> Bronze */}
+                {tickerItems.map((item, idx) => (
+                    <li key={`ticker-1-${idx}-${item.type}`} className="flex-shrink-0">
                         <img 
                             src="/Imgs/Hitachi_Global_Logo_Black_PANTONE.png" 
-                            alt="Sponsor" 
-                            className="h-6 sm:h-8 w-auto object-contain grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all cursor-pointer" 
+                            alt={`Sponsor ${item.type}`} 
+                            className={`${getTickerStyle(item.type)} transition-all cursor-pointer`} 
                         />
                     </li>
                 ))}
             </ul>
-            <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
-                {[...goldSponsors, ...silverSponsors, ...goldSponsors, ...silverSponsors].map((id, idx) => (
-                    <li key={`duplicate-${idx}`}>
+            <ul className="flex items-center justify-center md:justify-start animate-infinite-scroll" aria-hidden="true">
+                {/* Duplicata para loop infinito */}
+                {tickerItems.map((item, idx) => (
+                    <li key={`ticker-2-${idx}-${item.type}`} className="flex-shrink-0">
                         <img 
                             src="/Imgs/Hitachi_Global_Logo_Black_PANTONE.png" 
-                            alt="Sponsor" 
-                            className="h-6 sm:h-8 w-auto object-contain grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all cursor-pointer" 
+                            alt={`Sponsor ${item.type}`} 
+                            className={`${getTickerStyle(item.type)} transition-all cursor-pointer`} 
                         />
                     </li>
                 ))}
             </ul>
         </div>
         
-        {/* Style tag para animação do marquee */}
+        {/* Style tag para animação do marquee - Velocidade reduzida para 60s */}
         <style>{`
             @keyframes infinite-scroll {
                 from { transform: translateX(0); }
                 to { transform: translateX(-100%); }
             }
             .animate-infinite-scroll {
-                animation: infinite-scroll 40s linear infinite;
+                animation: infinite-scroll 60s linear infinite;
             }
         `}</style>
       </div>

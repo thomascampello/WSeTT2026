@@ -1,18 +1,9 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Modal from './Modal';
 import { SPONSORSHIP_DATA } from '../constants';
 
-// Definição dos tipos para as fases
-interface SponsorPhase {
-    id: string;
-    label: string;
-    duration: number;
-    logos: { id: number; src: string; alt: string }[];
-    imgClass: string;
-    containerClass: string;
-    badgeClass: string;
-}
+// --- Subcomponentes Estáticos (Lista Principal e CTA) permanecem iguais ---
 
 // Subcomponente para a Lista Estática de Logos
 export const SponsorsList: React.FC = () => {
@@ -105,7 +96,7 @@ export const SponsorsList: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Categoria ORGANIZAÇÃO (Antiga Realização) */}
+                {/* Categoria ORGANIZAÇÃO */}
                 <div className="mb-12">
                     <div className="flex items-center justify-center gap-4 mb-8">
                         <div className="h-[1px] w-12 bg-gray-200"></div>
@@ -132,7 +123,7 @@ export const SponsorsList: React.FC = () => {
     );
 }
 
-// Subcomponente para a CTA de Patrocínio (Faixa Verde Compacta)
+// Subcomponente para a CTA de Patrocínio
 export const SponsorshipCTA: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -203,105 +194,109 @@ export const SponsorshipCTA: React.FC = () => {
     );
 }
 
-// Componente Principal que inclui o Carrossel Fixo
-const Sponsors: React.FC = () => {
-  // ... Código do Carrossel (Fixo) permanece inalterado ...
-  const goldSponsors = [1, 2, 3];
-  const silverSponsors = [1, 2, 3];
-  const bronzeSponsors = [1, 2];
+// --- BARRA FIXA (MARQUEE) ---
 
-  const initialPhases: SponsorPhase[] = [
+interface SponsorGroup {
+    id: string;
+    label: string;
+    badgeColor: string;
+    logos: { id: number; src: string; alt: string }[];
+    imgClass: string;
+}
+
+const Sponsors: React.FC = () => {
+  // Configuração dos Grupos
+  const groups: SponsorGroup[] = [
     {
       id: 'gold',
       label: 'Patrocínio Ouro',
-      duration: 5000,
-      logos: goldSponsors.map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })),
-      imgClass: 'h-10 sm:h-12 grayscale-0', 
-      containerClass: 'gap-6 sm:gap-10',
-      badgeClass: 'text-yellow-700 bg-yellow-100 border-yellow-200'
+      badgeColor: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+      logos: [1, 2, 3].map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })),
+      imgClass: 'h-10 md:h-12'
     },
     {
       id: 'silver',
       label: 'Patrocínio Prata',
-      duration: 4000,
-      logos: silverSponsors.map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })),
-      imgClass: 'h-10 sm:h-12 grayscale opacity-90 hover:grayscale-0 hover:opacity-100',
-      containerClass: 'gap-6 sm:gap-10',
-      badgeClass: 'text-gray-700 bg-gray-100 border-gray-200'
+      badgeColor: 'bg-gray-100 text-gray-700 border-gray-200',
+      logos: [1, 2, 3].map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })),
+      imgClass: 'h-9 md:h-10 opacity-80'
     },
     {
       id: 'bronze',
       label: 'Patrocínio Bronze',
-      duration: 3000,
-      logos: bronzeSponsors.map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })),
-      imgClass: 'h-10 sm:h-12 grayscale opacity-80 hover:grayscale-0 hover:opacity-100',
-      containerClass: 'gap-6 sm:gap-10',
-      badgeClass: 'text-orange-800 bg-orange-100 border-orange-200'
+      badgeColor: 'bg-orange-100 text-orange-800 border-orange-200',
+      logos: [1, 2].map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })),
+      imgClass: 'h-7 md:h-8 opacity-70'
     }
+    // Organização removida do marquee conforme solicitado
   ];
 
-  const [queue, setQueue] = useState<SponsorPhase[]>(initialPhases);
-  const [isExiting, setIsExiting] = useState(false);
-
-  useEffect(() => {
-    const currentItem = queue[0];
-    const TRANSITION_DURATION = 1000;
-    const cycleTimer = setTimeout(() => {
-      setIsExiting(true);
-      setTimeout(() => {
-        setQueue((prevQueue) => {
-            const [first, ...rest] = prevQueue;
-            return [...rest, first];
-        });
-        setIsExiting(false);
-      }, TRANSITION_DURATION);
-    }, currentItem.duration);
-    return () => clearTimeout(cycleTimer);
-  }, [queue]);
+  // Componente que renderiza a sequência completa (Inline)
+  const MarqueeContent = () => (
+    <div className="flex items-center gap-8 md:gap-12 px-4">
+      {groups.map((group) => (
+        <div key={group.id} className="flex items-center gap-6 md:gap-8 shrink-0">
+          {/* Badge do Grupo (viaja junto com os logos) */}
+          <span className={`
+            px-3 py-1.5 md:px-4 md:py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border whitespace-nowrap shadow-sm
+            ${group.badgeColor}
+          `}>
+            {group.label}
+          </span>
+          
+          {/* Logos do Grupo */}
+          <div className="flex items-center gap-8 md:gap-12">
+            {group.logos.map((logo, idx) => (
+               <img 
+                 key={`${group.id}-${logo.id}-${idx}`}
+                 src={logo.src}
+                 alt={logo.alt}
+                 className={`${group.imgClass} w-auto object-contain shrink-0`}
+               />
+            ))}
+          </div>
+          
+          {/* Divisor Visual (opcional, para separar tiers) */}
+          <div className="w-px h-8 bg-gray-200 hidden md:block"></div>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <>
-        {/* O conteúdo estático e o CTA agora são renderizados via App.tsx para controlar a ordem, 
-            este componente cuida APENAS da barra fixa */}
+      <style>{`
+        @keyframes marquee-infinite {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee-infinite {
+          animation: marquee-infinite 40s linear infinite;
+        }
+        /* Pausa a animação ao passar o mouse */
+        .group-marquee:hover .animate-marquee-infinite {
+          animation-play-state: paused;
+        }
+      `}</style>
       
       {/* BARRA FIXA DE PATROCINADORES */}
-      <div className="fixed bottom-0 left-0 w-full z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] h-20 sm:h-24 flex items-center overflow-hidden">
-        <div className="flex items-center bg-white h-full px-6 border-r border-gray-100 shrink-0 z-30 shadow-[5px_0_15px_-5px_rgba(0,0,0,0.05)] relative">
+      <div className="fixed bottom-0 left-0 w-full z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] h-20 sm:h-24 flex items-center group-marquee">
+        
+        {/* Label Fixa na Esquerda "NOSSOS PATROCINADORES" */}
+        <div className="flex items-center bg-white h-full px-4 sm:px-6 border-r border-gray-100 shrink-0 z-50 shadow-[5px_0_15px_-5px_rgba(0,0,0,0.05)]">
             <div className="flex flex-col">
                 <span className="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Nossos</span>
-                <span className="text-sm font-bold text-cigre-green uppercase tracking-wider whitespace-nowrap">Patrocinadores</span>
+                <span className="text-xs sm:text-sm font-bold text-cigre-green uppercase tracking-wider whitespace-nowrap">Patrocinadores</span>
             </div>
         </div>
         
-        <div className="flex-1 h-full relative overflow-hidden flex items-center">
-            {queue.map((phase, index) => (
-                <div 
-                    key={phase.id}
-                    className={`
-                        flex items-center flex-shrink-0 transition-all duration-[1000ms] ease-in-out border-r border-gray-50/50 overflow-hidden
-                        ${index === 0 && isExiting 
-                            ? 'max-w-0 opacity-0 -translate-x-10 px-0' 
-                            : 'max-w-screen-xl opacity-100 translate-x-0 px-6 sm:px-10'
-                        }
-                    `}
-                >
-                    <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 whitespace-nowrap">
-                        <span className={`text-[10px] sm:text-xs font-bold uppercase tracking-widest py-2 px-4 rounded-full border shadow-sm ${phase.badgeClass}`}>
-                            {phase.label}
-                        </span>
-                        <div className={`flex items-center ${phase.containerClass}`}>
-                            {phase.logos.map((logo) => (
-                                <img 
-                                    key={`${phase.id}-logo-${logo.id}`}
-                                    src={logo.src} 
-                                    alt={logo.alt} 
-                                    className={`${phase.imgClass} w-auto object-contain transition-all duration-300`} 
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            ))}
+        {/* Container do Scroll Infinito */}
+        <div className="flex-1 overflow-hidden relative h-full flex items-center mask-image-linear-gradient">
+            <div className="flex animate-marquee-infinite">
+                {/* Renderizamos o conteúdo duas vezes para criar o loop infinito perfeito sem gaps */}
+                <MarqueeContent />
+                <MarqueeContent />
+            </div>
         </div>
       </div>
     </>

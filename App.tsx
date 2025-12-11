@@ -1,12 +1,13 @@
+
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import About from './components/About';
+import { AboutEvent, AboutB4 } from './components/About';
 import Program from './components/Program';
 import Location from './components/Location';
 import CommitteeCarousel from './components/CommitteeCarousel';
 import Pricing from './components/Pricing';
-import Sponsors from './components/Sponsors';
+import Sponsors, { SponsorsList, SponsorshipCTA } from './components/Sponsors';
 import Footer from './components/Footer';
 import Modal from './components/Modal';
 
@@ -25,12 +26,34 @@ function App() {
     <div className="font-sans antialiased text-gray-900 bg-gray-50">
       <Header />
       <main>
+        {/* 1. Hero */}
         <Hero />
-        <About />
-        <Program />
+        
+        {/* 2. Sobre o evento */}
+        <AboutEvent />
+        
+        {/* 3. Local do evento */}
         <Location />
-        <CommitteeCarousel />
+        
+        {/* 4. Programa provisório */}
+        <Program />
+        
+        {/* 5. Inscrição */}
         <Pricing />
+        
+        {/* 6. Patrocinador (Lista de Logos Estática) */}
+        <SponsorsList />
+        
+        {/* 7. Seja um patrocinador (CTA) - Movido para cá */}
+        <SponsorshipCTA />
+        
+        {/* 8. Comitê Organizador */}
+        <CommitteeCarousel />
+        
+        {/* 9. Conheça o B4 */}
+        <AboutB4 />
+        
+        {/* Barra Fixa de Patrocinadores (Sempre no final da tela) */}
         <Sponsors />
       </main>
       <Footer />

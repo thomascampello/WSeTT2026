@@ -3,6 +3,8 @@ import React from 'react';
 import { EVENT_DATE, EVENT_LOCATION } from '../constants';
 
 const Hero: React.FC = () => {
+  const lastUpdated = new Date().toLocaleDateString('pt-BR');
+
   return (
     <div id="home" className="relative bg-cigre-green h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* Background Pattern */}
@@ -20,6 +22,13 @@ const Hero: React.FC = () => {
         alt="Background Tecnologia" 
         className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
       />
+
+      {/* Last Updated Tag */}
+      <div className="absolute top-24 right-4 md:right-8 z-20">
+        <span className="text-[10px] md:text-xs text-white/50 bg-black/30 px-2 py-1 rounded backdrop-blur-sm">
+            Site atualizado em: {lastUpdated}
+        </span>
+      </div>
 
       <div className="relative z-20 text-center px-4 max-w-5xl mx-auto">
         

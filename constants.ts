@@ -9,22 +9,23 @@ const PRICE_STUDENT = 770.09;
 export const DISCOUNT_DEADLINE = '31 de Janeiro de 2026';
 export const DISCOUNT_PERCENTAGE = 0.20;
 
+export const CIGRE_ADDRESS = "Praia de Botafogo, 228 - Conj. 1702 - Botafogo, Rio de Janeiro - RJ, 22250-040";
+export const CIGRE_EMAIL = "eventos@cigre.org.br";
+
+export const CANCELLATION_POLICY = `
+  Cancelamentos devem ser solicitados por escrito para o e-mail oficial do evento.
+  - Até 30 dias antes do evento: Reembolso de 80% do valor pago.
+  - De 29 a 15 dias antes do evento: Reembolso de 50% do valor pago.
+  - Menos de 15 dias antes do evento: Não haverá reembolso, apenas substituição de participante permitida até 48h antes do início.
+`;
+
 // Helper function to calculate price with specific rounding rules
-// Rule: Apply discount, then round DOWN to the nearest value ending in .09
 export const calculateDiscountedPrice = (basePrice: number): number => {
   const rawDiscounted = basePrice * (1 - DISCOUNT_PERCENTAGE);
-  
-  // Create a candidate value that is the integer part of rawDiscounted + 0.09
   let candidate = Math.floor(rawDiscounted) + 0.09;
-
-  // If the candidate (e.g., 100.09) is greater than the raw discounted price (e.g., 100.05),
-  // we must round down to the previous integer (e.g., 99.09) to ensure the discount 
-  // is at least percentage requested.
   if (candidate > rawDiscounted) {
     candidate -= 1.00;
   }
-
-  // Fix float precision issues (e.g. 1539.090000001)
   return parseFloat(candidate.toFixed(2));
 };
 
@@ -51,6 +52,16 @@ export const PRICING_TIERS: PricingTier[] = [
     highlight: false,
   },
 ];
+
+export const SPONSORSHIP_DATA = {
+  columns: ['Item', 'Ouro', 'Prata', 'Bronze'],
+  rows: [
+    { label: 'Número de Inscrições Incluídas', gold: '5', silver: '2', bronze: '1' },
+    { label: 'Direito a Palestra', gold: 'Duas palestras no 2º dia (1h-1h30 e 30-40min)', silver: 'Uma palestra de 30min (sujeito a disp.)', bronze: 'Sem direito a palestra' },
+    { label: 'Marketing', gold: 'Totem (60x190), material, brindes, logo site/evento', silver: 'Totem (60x190), material, brindes, logo site/evento', bronze: 'Material, brindes, logo site/evento' },
+    { label: 'Investimento', gold: 'R$ 28.567,09', silver: 'R$ 14.734,09', bronze: 'R$ 7.759,09' }
+  ]
+};
 
 export const EVENT_COMMITTEE: CommitteeMember[] = [
   {

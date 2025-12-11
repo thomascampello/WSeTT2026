@@ -7,16 +7,15 @@ const Header: React.FC = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   // Updated link order based on user request:
-  // Sobre o evento, Local, Programa, Inscrição, Patrocinador, Comitê, Conheça o B4, Seja um patrocinador
+  // Sobre, Local, Programação, Patrocinadores, Comitê, B4, Inscreva-se (Button)
   const navLinks = [
     { name: 'Sobre o Evento', href: '#sobre' },
     { name: 'Local', href: '#local' },
-    { name: 'Programa Provisório', href: '#programacao' },
-    { name: 'Inscrição', href: '#inscricao' },
+    { name: 'Programação', href: '#programacao' },
     { name: 'Patrocinadores', href: '#patrocinio' },
     { name: 'Comitê Organizador', href: '#comite' },
     { name: 'Conheça o B4', href: '#conheca-comite' },
-    { name: 'Seja um patrocinador', href: '#seja-um-patrocinador' },
+    { name: 'Inscreva-se', href: '#inscricao' },
   ];
 
   const scrollToSection = (id: string) => {
@@ -46,14 +45,14 @@ const Header: React.FC = () => {
           </div>
           
           {/* Desktop Menu */}
-          <div className="hidden xl:flex items-center space-x-4">
+          <div className="hidden xl:flex items-center space-x-6">
             {navLinks.map((link) => {
-               if (link.name === 'Seja um patrocinador') {
+               if (link.name === 'Inscreva-se') {
                    return (
                        <button
                          key={link.name}
                          onClick={() => scrollToSection(link.href)}
-                         className="px-4 py-2 bg-cigre-green text-white font-bold rounded-full hover:bg-emerald-800 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none text-sm"
+                         className="px-6 py-2.5 bg-cigre-green text-white font-bold rounded-full hover:bg-emerald-800 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none text-base"
                        >
                          {link.name}
                        </button>
@@ -63,7 +62,7 @@ const Header: React.FC = () => {
                   <button
                     key={link.name}
                     onClick={() => scrollToSection(link.href)}
-                    className="text-gray-600 hover:text-cigre-green hover:font-semibold transition-all duration-300 text-xs font-medium uppercase tracking-wider focus:outline-none whitespace-nowrap"
+                    className="text-gray-600 hover:text-cigre-green hover:font-semibold transition-all duration-300 text-sm font-medium uppercase tracking-wider focus:outline-none whitespace-nowrap"
                   >
                     {link.name}
                   </button>
@@ -92,7 +91,7 @@ const Header: React.FC = () => {
                 key={link.name}
                 onClick={() => scrollToSection(link.href)}
                 className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${
-                    link.name === 'Seja um patrocinador' 
+                    link.name === 'Inscreva-se' 
                     ? 'text-cigre-green font-bold bg-green-50' 
                     : 'text-gray-700 hover:text-cigre-green hover:bg-cigre-light'
                 }`}

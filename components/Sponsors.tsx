@@ -238,9 +238,10 @@ const Sponsors: React.FC = () => {
   ];
 
   // Componente que renderiza a sequência completa (Inline)
-  // Alterado para min-w-full e justify-around para espaçar o conteúdo por toda a tela
+  // Utiliza flex-shrink-0 para garantir que o conteúdo não seja comprimido
+  // min-w-full garante que o conteúdo ocupe pelo menos a largura da tela para o loop
   const MarqueeContent = () => (
-    <div className="flex items-center justify-around min-w-full gap-8 px-4">
+    <div className="flex items-center justify-around min-w-full flex-shrink-0 gap-8 px-8">
       {groups.map((group) => (
         <div key={group.id} className="flex items-center gap-4 md:gap-6 shrink-0">
           {/* Badge do Grupo (viaja junto com os logos) */}
@@ -251,7 +252,7 @@ const Sponsors: React.FC = () => {
             {group.label}
           </span>
           
-          {/* Logos do Grupo - Envoltos em containers fixos para evitar sobreposição */}
+          {/* Logos do Grupo */}
           <div className="flex items-center gap-4">
             {group.logos.map((logo, idx) => (
                <div 
@@ -278,11 +279,13 @@ const Sponsors: React.FC = () => {
     <>
       <style>{`
         @keyframes marquee-infinite {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
         }
         .animate-marquee-infinite {
           animation: marquee-infinite 30s linear infinite;
+          width: fit-content; /* Ensure container fits the content width naturally */
+          min-width: 200%; /* Ensure it's wide enough for the 50% shift */
         }
         /* Pausa a animação ao passar o mouse */
         .group-marquee:hover .animate-marquee-infinite {
@@ -294,15 +297,23 @@ const Sponsors: React.FC = () => {
       <div className="fixed bottom-0 left-0 w-full z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] h-20 sm:h-24 flex items-center group-marquee">
         
         {/* Label Fixa na Esquerda "NOSSOS PATROCINADORES" */}
-        <div className="flex items-center bg-white h-full px-4 sm:px-6 border-r border-gray-100 shrink-0 z-50 shadow-[5px_0_15px_-5px_rgba(0,0,0,0.05)]">
+        <div className="flex items-center bg-white h-full px-4 sm:px-6 border-r border-gray-100 shrink-0 z-50 shadow-[5px_0_15px_-5px_rgba(0,0,0,0.05)] relative">
             <div className="flex flex-col">
                 <span className="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Nossos</span>
                 <span className="text-xs sm:text-sm font-bold text-cigre-green uppercase tracking-wider whitespace-nowrap">Patrocinadores</span>
             </div>
+            {/* Fade right edge of the label box */}
+            <div className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-l from-transparent to-white/0"></div>
         </div>
         
         {/* Container do Scroll Infinito */}
-        <div className="flex-1 overflow-hidden relative h-full flex items-center mask-image-linear-gradient">
+        <div 
+            className="flex-1 overflow-hidden relative h-full flex items-center"
+            style={{
+                maskImage: 'linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent)',
+                WebkitMaskImage: 'linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent)'
+            }}
+        >
             <div className="flex animate-marquee-infinite">
                 {/* Renderizamos o conteúdo duas vezes para criar o loop infinito perfeito sem gaps */}
                 <MarqueeContent />

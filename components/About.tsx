@@ -74,7 +74,7 @@ export const AboutB4: React.FC = () => {
             </div>
             <div className="mt-8 border-t pt-8">
                 <TeamSlider 
-                    title="Membros do CE-B4" 
+                    title="Coordenação do CE-B4" 
                     members={CEB4_COORDINATION} 
                     titleColorClass="text-cigre-accent" 
                 />

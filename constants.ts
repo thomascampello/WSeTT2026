@@ -147,33 +147,43 @@ export const EVENT_COMMITTEE: CommitteeMember[] = [
 export const CEB4_COORDINATION: CommitteeMember[] = [
   {
     id: 1,
-    name: 'Ricardo Tenório',
+    name: 'Thomas M. Campello',
     role: 'Coordenador',
-    image: 'https://ui-avatars.com/api/?name=Ricardo+Tenorio&background=0099cc&color=fff',
+    image: '/Imgs/Thomas_Campello.jpg',
+    initials: 'TC',
+    bio: 'CEFET/RJ'
   },
   {
     id: 2,
-    name: 'Rogério Magalhães',
+    name: 'Trevor M. C. Vilella do Carmo Dobbin',
     role: 'Secretário',
-    image: 'https://ui-avatars.com/api/?name=Rogerio+Magalhaes&background=0099cc&color=fff',
+    image: '/Imgs/Trevor_Dobbin.jpg',
+    initials: 'TD',
+    bio: ''
   },
   {
     id: 3,
-    name: 'Dourival Carvalho',
-    role: 'Membro Regular',
-    image: 'https://ui-avatars.com/api/?name=Dourival+Carvalho&background=0099cc&color=fff',
+    name: 'Edson Hirokazu Watanabe',
+    role: 'Assessor Científico',
+    image: '/Imgs/Edson_Watanabe.jpg',
+    initials: 'EW',
+    bio: 'COPPE/UFRJ'
   },
   {
     id: 4,
-    name: 'Manfredo Correia',
-    role: 'Membro Regular',
-    image: 'https://ui-avatars.com/api/?name=Manfredo+Correia&background=0099cc&color=fff',
+    name: 'Sérgio do Espírito Santo',
+    role: 'Especialista',
+    image: '/Imgs/Sergio_Espirito_Santo.jpg',
+    initials: 'SS',
+    bio: 'Consultor Independente'
   },
   {
     id: 5,
-    name: 'Sergio Espírito Santo',
-    role: 'Membro Regular',
-    image: 'https://ui-avatars.com/api/?name=Sergio+Espirito&background=0099cc&color=fff',
+    name: 'Camila Maciel',
+    role: 'Representante WIE',
+    image: '/Imgs/Camila_Maciel.jpg',
+    initials: 'CM',
+    bio: 'State Grid'
   },
 ];
 
@@ -216,7 +226,7 @@ export const SCHEDULE_DAY_1: ScheduleItem[] = [
   { time: '10:10 - 10:40', activity: 'Coffe-break', speaker: '-', type: 'break' },
   { time: '10:40 - 11:20', activity: 'Sistemas VSC-MMC e características operativas', speaker: 'Paulo Max Maciel Portugal (COPPE)', type: 'session' },
   { time: '11:20 - 12:00', activity: 'Desafios para Expansão da Transmissão HVDC no País', speaker: 'Dourival de Souza Carvalho Junior (EPE)', type: 'session' },
-  { time: '12:00 - 13:30', activity: 'Almoço Livre', speaker: '-', type: 'lunch' },
+  { time: '12:00 - 13:30', activity: 'Almoço', speaker: '-', type: 'lunch' },
   { time: '13:30 - 14:30', activity: 'Utilização de STATCOMs no Brasil e no mundo: uma tecnologia para propiciar a transição energética', speaker: 'Antonio Ricardo de Mattos Tenório (ONS)', type: 'session' },
   { time: '14:30 - 15:30', activity: 'Aplicação de Eletrônica de Potência para a interface de fontes renováveis com o SIN (Wind Onshore, Offshore/PV)', speaker: 'Robson Dias (COPPE)', type: 'session' },
   { time: '15:30 - 16:00', activity: 'Coffe-Break', speaker: '-', type: 'break' },
@@ -225,12 +235,4 @@ export const SCHEDULE_DAY_1: ScheduleItem[] = [
   { time: '19:00', activity: 'Jantar de Confraternização (Local a confirmar)', speaker: '-', type: 'lunch' },
 ];
 
-export const SCHEDULE_DAY_2: ScheduleItem[] = [
-  { time: '09:00', activity: 'Tutorial: Tecnologia VSC - Fundamentos', speaker: 'Instrutor Internacional', type: 'session' },
-  { time: '10:30', activity: 'Coffee Break', speaker: '-', type: 'break' },
-  { time: '11:00', activity: 'Tutorial: Grid Forming Converters', speaker: 'Especialista Técnico', type: 'session' },
-  { time: '12:30', activity: 'Almoço Livre', speaker: '-', type: 'lunch' },
-  { time: '14:00', activity: 'Discussão Regulatória e Planejamento', speaker: 'Representantes ONS/EPE', type: 'session' },
-  { time: '15:30', activity: 'Coffee Break', speaker: '-', type: 'break' },
-  { time: '16:00', activity: 'Sessão de Encerramento e Perspectivas Futuras', speaker: 'Comitê B4', type: 'session' },
-];
+export const SCHEDULE_DAY_2: ScheduleItem[] = [];

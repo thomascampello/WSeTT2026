@@ -1,3 +1,4 @@
+
 export interface PricingTier {
   id: string;
   name: string;
@@ -12,6 +13,7 @@ export interface CommitteeMember {
   role: string;
   image: string;
   bio?: string;
+  initials?: string;
 }
 
 export interface SponsorLevel {

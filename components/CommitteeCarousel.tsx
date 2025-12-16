@@ -13,6 +13,13 @@ export const TeamSlider: React.FC<{ title: string; members: CommitteeMember[]; t
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [selectedMember, setSelectedMember] = useState<CommitteeMember | null>(null);
+  
+  // State to track failed image loads
+  const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
+
+  const handleImageError = (id: number) => {
+    setImageErrors(prev => ({ ...prev, [id]: true }));
+  };
 
   // Configuration
   const desktopItems = 3;
@@ -60,8 +67,6 @@ export const TeamSlider: React.FC<{ title: string; members: CommitteeMember[]; t
 
 
   // Calculate translate percentage
-  // We want to slide item by item.
-  // Each item takes up (100 / itemsPerPage)% width
   const translateValue = currentIndex * (100 / itemsPerPage);
 
   return (
@@ -99,10 +104,6 @@ export const TeamSlider: React.FC<{ title: string; members: CommitteeMember[]; t
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${translateValue}%)` }}
         >
-           {/* We repeat the array once to create a smoother feel near end, though infinite loop is complex without clones. 
-               For this implementation, we will just map the members directly and let it slide. 
-               When index goes back to 0 it will slide back to start.
-           */}
            {members.map((member, idx) => (
              <div 
                 key={`${member.id}-${idx}`} 
@@ -114,17 +115,25 @@ export const TeamSlider: React.FC<{ title: string; members: CommitteeMember[]; t
                  className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-xl transition-all duration-300 hover:shadow-md transform hover:-translate-y-1 cursor-pointer h-full border border-transparent hover:border-cigre-green/20"
                 >
                   <div className="w-24 h-24 mb-4 relative">
-                    <img 
-                      src={member.image} 
-                      alt={member.name} 
-                      className="w-full h-full object-cover rounded-full border-4 border-white shadow-sm"
-                    />
-                    <div className="absolute inset-0 rounded-full bg-black/0 hover:bg-black/10 transition-colors flex items-center justify-center">
-                        <span className="opacity-0 hover:opacity-100 text-white text-xs font-bold bg-black/50 px-2 py-1 rounded-full">+ Info</span>
+                    {imageErrors[member.id] || !member.image ? (
+                        <div className="w-full h-full rounded-full border-4 border-white shadow-sm bg-gradient-to-br from-cigre-green to-emerald-600 flex items-center justify-center text-white font-bold text-2xl tracking-wider">
+                            {member.initials || member.name.substring(0, 2).toUpperCase()}
+                        </div>
+                    ) : (
+                        <img 
+                          src={member.image} 
+                          alt={member.name} 
+                          onError={() => handleImageError(member.id)}
+                          className="w-full h-full object-cover rounded-full border-4 border-white shadow-sm"
+                        />
+                    )}
+                    
+                    <div className="absolute inset-0 rounded-full bg-black/0 hover:bg-black/10 transition-colors flex items-center justify-center pointer-events-none">
+                        <span className="opacity-0 group-hover:opacity-100 text-white text-xs font-bold bg-black/50 px-2 py-1 rounded-full transition-opacity">+ Info</span>
                     </div>
                   </div>
-                  <h4 className="font-bold text-gray-800 text-sm md:text-base">{member.name}</h4>
-                  <p className="text-xs text-gray-500 mt-1 uppercase tracking-wide">{member.role}</p>
+                  <h4 className="font-bold text-gray-800 text-sm md:text-base leading-tight min-h-[40px] flex items-center justify-center">{member.name}</h4>
+                  <p className="text-xs text-gray-500 mt-2 uppercase tracking-wide font-medium">{member.role}</p>
                </div>
              </div>
            ))}
@@ -135,23 +144,30 @@ export const TeamSlider: React.FC<{ title: string; members: CommitteeMember[]; t
       <Modal 
         isOpen={!!selectedMember} 
         onClose={() => setSelectedMember(null)}
-        title="Perfil do Membro"
+        title="Perfil"
       >
         {selectedMember && (
             <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
                 <div className="w-32 h-32 flex-shrink-0">
-                    <img 
-                      src={selectedMember.image} 
-                      alt={selectedMember.name} 
-                      className="w-full h-full object-cover rounded-full border-4 border-cigre-green shadow-md"
-                    />
+                    {imageErrors[selectedMember.id] || !selectedMember.image ? (
+                         <div className="w-full h-full rounded-full border-4 border-cigre-green shadow-md bg-gradient-to-br from-cigre-green to-emerald-600 flex items-center justify-center text-white font-bold text-3xl">
+                            {selectedMember.initials || selectedMember.name.substring(0, 2).toUpperCase()}
+                        </div>
+                    ) : (
+                        <img 
+                          src={selectedMember.image} 
+                          alt={selectedMember.name} 
+                          className="w-full h-full object-cover rounded-full border-4 border-cigre-green shadow-md"
+                        />
+                    )}
                 </div>
                 <div>
                     <h3 className="text-xl font-bold text-gray-900">{selectedMember.name}</h3>
-                    <p className="text-cigre-green font-medium mb-4">{selectedMember.role}</p>
-                    <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 text-sm text-gray-700 leading-relaxed text-justify">
-                        {selectedMember.bio || "Biografia não disponível no momento."}
-                    </div>
+                    <p className="text-cigre-green font-medium mb-1">{selectedMember.role}</p>
+                    {/* Show affiliation from bio if available and not redundant, but here bio contains affiliation mainly */}
+                    {selectedMember.bio && (
+                        <p className="text-gray-500 font-medium mb-4 text-sm">{selectedMember.bio}</p>
+                    )}
                 </div>
             </div>
         )}

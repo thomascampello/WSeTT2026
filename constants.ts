@@ -157,7 +157,7 @@ export const CEB4_COORDINATION: CommitteeMember[] = [
     id: 2,
     name: 'Trevor M. C. Vilella do Carmo Dobbin',
     role: 'Secretário',
-    image: '/Imgs/Trevor_Dobbin.jpg',
+    image: '/Imgs/Trevor_Dobbin.png',
     initials: 'TD',
     bio: ''
   },
@@ -173,7 +173,7 @@ export const CEB4_COORDINATION: CommitteeMember[] = [
     id: 4,
     name: 'Sérgio do Espírito Santo',
     role: 'Especialista',
-    image: '/Imgs/Sergio_Espirito_Santo.jpg',
+    image: '/Imgs/Sergio_Santo.jpg',
     initials: 'SS',
     bio: 'Consultor Independente'
   },

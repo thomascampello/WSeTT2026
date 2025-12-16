@@ -7,9 +7,10 @@ import { SPONSORSHIP_DATA } from '../constants';
 
 // Subcomponente para a Lista Estática de Logos
 export const SponsorsList: React.FC = () => {
-    const goldSponsors = [1, 2, 3];
-    const silverSponsors = [1, 2, 3];
-    const bronzeSponsors = [1, 2];
+    // Reduzido para apenas 1 patrocinador Ouro e comentados os outros conforme solicitado
+    const goldSponsors = [1]; 
+    // const silverSponsors = [1, 2, 3];
+    // const bronzeSponsors = [1, 2];
 
     return (
         <section id="patrocinio" className="py-24 bg-gray-50 scroll-mt-24 relative overflow-hidden">
@@ -48,7 +49,8 @@ export const SponsorsList: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Categoria PRATA */}
+                {/* Categoria PRATA (Comentada) */}
+                {/*
                 <div className="mb-16">
                     <div className="flex items-center justify-center gap-4 mb-10">
                         <div className="h-[1px] w-12 bg-gray-400"></div>
@@ -71,8 +73,10 @@ export const SponsorsList: React.FC = () => {
                         ))}
                     </div>
                 </div>
+                */}
 
-                {/* Categoria BRONZE */}
+                {/* Categoria BRONZE (Comentada) */}
+                {/*
                 <div className="mb-20">
                     <div className="flex items-center justify-center gap-4 mb-10">
                         <div className="h-[1px] w-8 bg-orange-300"></div>
@@ -95,6 +99,7 @@ export const SponsorsList: React.FC = () => {
                         ))}
                     </div>
                 </div>
+                */}
 
                 {/* Categoria ORGANIZAÇÃO */}
                 <div className="mb-12">
@@ -211,9 +216,10 @@ const Sponsors: React.FC = () => {
       id: 'gold',
       label: 'Patrocínio Ouro',
       badgeColor: 'bg-yellow-100 text-yellow-800 border-yellow-200',
-      logos: [1, 2, 3].map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })),
+      logos: [1].map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })), // Apenas 1 logo
       imgClass: '' // Classe específica removida aqui pois será controlada pelo container
     },
+    /*
     {
       id: 'silver',
       label: 'Patrocínio Prata',
@@ -228,11 +234,13 @@ const Sponsors: React.FC = () => {
       logos: [1, 2].map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })),
       imgClass: 'opacity-70'
     }
+    */
   ];
 
   // Componente que renderiza a sequência completa (Inline)
+  // Alterado para min-w-full e justify-around para espaçar o conteúdo por toda a tela
   const MarqueeContent = () => (
-    <div className="flex items-center gap-4 md:gap-8 px-4">
+    <div className="flex items-center justify-around min-w-full gap-8 px-4">
       {groups.map((group) => (
         <div key={group.id} className="flex items-center gap-4 md:gap-6 shrink-0">
           {/* Badge do Grupo (viaja junto com os logos) */}
@@ -274,7 +282,7 @@ const Sponsors: React.FC = () => {
           100% { transform: translateX(-50%); }
         }
         .animate-marquee-infinite {
-          animation: marquee-infinite 40s linear infinite;
+          animation: marquee-infinite 30s linear infinite;
         }
         /* Pausa a animação ao passar o mouse */
         .group-marquee:hover .animate-marquee-infinite {

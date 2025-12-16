@@ -23,7 +23,7 @@ const Pricing: React.FC = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {PRICING_TIERS.map((tier) => {
             const finalPrice = isDiscountActive 
                 ? calculateDiscountedPrice(tier.basePrice) 
@@ -32,7 +32,7 @@ const Pricing: React.FC = () => {
             return (
               <div 
                 key={tier.id}
-                className="flex flex-col p-8 bg-white rounded-xl border border-gray-200 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden group relative"
+                className="flex flex-col p-6 bg-white rounded-xl border border-gray-200 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden group relative"
               >
                 {/* Ribbon -20% */}
                 {isDiscountActive && (
@@ -43,13 +43,9 @@ const Pricing: React.FC = () => {
 
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{tier.name}</h3>
                 
-                {tier.id === 'student' && (
-                  <span className="inline-block bg-amber-100 text-amber-800 text-[10px] px-2 py-0.5 rounded-full font-bold mb-2 w-fit uppercase tracking-wide">
-                    Limitado a 10% das vagas
-                  </span>
-                )}
+                {/* Removed Student Limit Badge as requested */}
 
-                <p className="text-gray-500 text-sm mb-6 h-10 leading-snug">{tier.description}</p>
+                <p className="text-gray-500 text-sm mb-6 h-12 leading-snug">{tier.description}</p>
                 
                 {/* Unified Price Box */}
                 <div className="mb-4 mt-auto border-2 border-cigre-green/20 rounded-lg p-4 bg-gray-50/50 text-center relative">
@@ -62,13 +58,13 @@ const Pricing: React.FC = () => {
                     <div className="mt-2 flex flex-col items-center justify-center">
                         {/* Valor Cheio Grande e Riscado */}
                         {isDiscountActive && (
-                            <span className="block text-3xl font-extrabold text-gray-600 line-through opacity-80">
+                            <span className="block text-2xl lg:text-3xl font-extrabold text-gray-600 line-through opacity-80">
                                 {formatCurrency(tier.basePrice)}
                             </span>
                         )}
                         
                         {/* Valor Promocional Menor e Preto */}
-                        <span className="block text-xl font-bold text-gray-900 mt-1">
+                        <span className="block text-lg lg:text-xl font-bold text-gray-900 mt-1">
                             {formatCurrency(finalPrice)}
                         </span>
                     </div>
@@ -126,16 +122,18 @@ const Pricing: React.FC = () => {
             </div>
         </div>
 
-        {/* Cancellation Policy */}
+        {/* Cancellation Policy and Warnings */}
         <div className="max-w-4xl mx-auto bg-gray-50 p-6 rounded-xl text-sm text-gray-600 border border-gray-100">
+            {/* Warning Box Moved Above Title */}
+            <div className="mb-6 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-800 text-xs sm:text-sm space-y-2">
+                <p><strong>Atenção:</strong> As vagas para Estudantes e Sócios Estudante são limitadas a 10% das vagas totais.</p>
+                <p><strong>Observação importante:</strong> Os valores promocionais indicados acima (-20%) só serão válidos para inscrições efetivadas e pagas dentro da data estipulada da promoção ({DISCOUNT_DEADLINE}).</p>
+            </div>
+
             <h4 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
                 <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 Política de Cancelamento e Alteração
             </h4>
-            
-            <div className="mb-4 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-800 text-xs sm:text-sm">
-                <strong>Observação importante:</strong> Os valores promocionais indicados acima (-20%) só serão válidos para inscrições efetivadas e pagas dentro da data estipulada da promoção ({DISCOUNT_DEADLINE}).
-            </div>
 
             <div className="space-y-1 ml-2 pl-4 border-l border-gray-200">
                 {CANCELLATION_POLICY.split('\n').map((line, idx) => (

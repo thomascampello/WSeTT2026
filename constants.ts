@@ -5,6 +5,7 @@ import { PricingTier, CommitteeMember, ScheduleItem } from './types';
 const PRICE_NON_MEMBER = 2200.09;
 const PRICE_MEMBER = 1540.09;
 const PRICE_STUDENT = 770.09;
+const PRICE_MEMBER_STUDENT = 538.09;
 
 export const DISCOUNT_DEADLINE = '31 de Janeiro de 2026';
 export const DISCOUNT_PERCENTAGE = 0.20;
@@ -31,24 +32,31 @@ export const calculateDiscountedPrice = (basePrice: number): number => {
 
 export const PRICING_TIERS: PricingTier[] = [
   {
+    id: 'member-student',
+    name: 'Sócio Estudante',
+    basePrice: PRICE_MEMBER_STUDENT,
+    description: 'Estudantes de graduação ou pós-graduação, sem vínculo empregatício, e membros do CIGRE.',
+    highlight: true,
+  },
+  {
     id: 'student',
-    name: 'Estudantes',
+    name: 'Estudante',
     basePrice: PRICE_STUDENT,
-    description: 'Graduação e pós-graduação (sem vínculo).',
+    description: 'Estudantes de graduação ou pós-graduação, sem vínculo empregatício.',
     highlight: false,
   },
   {
     id: 'member',
-    name: 'Sócios CIGRE',
+    name: 'Sócio CIGRE',
     basePrice: PRICE_MEMBER,
-    description: 'Membros ativos individuais ou empresas.',
+    description: 'Profissionais sócios ativos individuais ou coletivo.',
     highlight: false,
   },
   {
     id: 'non-member',
-    name: 'Não Sócios',
+    name: 'Profissional',
     basePrice: PRICE_NON_MEMBER,
-    description: 'Profissionais e empresas não associadas.',
+    description: 'Profissionais e empresas não associadas ao CIGRE.',
     highlight: false,
   },
 ];
@@ -172,15 +180,24 @@ export const CEB4_COORDINATION: CommitteeMember[] = [
 export const EVENT_DATE = '17 e 18 de Março de 2026';
 export const EVENT_LOCATION = 'Edifício Argentina - Rio de Janeiro, RJ';
 
-export const MOTIVATION_TEXT = `
-  O desenvolvimento de aplicações de transmissão de energia elétrica em HVDC em níveis de tensão a partir de ±600 kV foi realizado no Brasil com base em extensivos estudos de planejamento e de viabilidade técnica e econômica. Tais estudos foram motivados pela necessidade de utilização da energia produzida pelas grandes usinas hidrelétricas planejadas entre as décadas de 1970 e 1980.
+export const MOTIVATION_TEXT = `O desenvolvimento de aplicações de transmissão de energia elétrica em HVDC no Brasil consolidou-se historicamente através de extensivos estudos de planejamento e viabilidade, motivados pela necessidade de escoamento de grandes blocos de energia de usinas hidrelétricas distantes dos centros de carga. A tecnologia em ±600 kV foi pioneira com o sistema de Itaipu na década de 1980 e, após um hiato de 30 anos, foi retomada e expandida com o complexo do Rio Madeira e, posteriormente, com a introdução da tecnologia UHVDC em ±800 kV no sistema de Belo Monte.
 
-  A tecnologia de transmissão em HVDC em ±600 kV no Brasil foi utilizada pela primeira vez no sistema desenvolvido para integração ao Sistema Elétrico Brasileiro da energia gerada pela usina hidroelétrica de Itaipu. Decorrido um intervalo de cerca de 30 anos, o Brasil voltou a utilizar a tecnologia de transmissão em HVDC em 2009, com o complexo hidroelétrico do Rio Madeira.
+No entanto, o cenário energético global e nacional atravessa uma transformação profunda impulsionada pela necessidade de descarbonização e pela transição energética. Se antes o foco era predominantemente o transporte de grandes blocos de geração hidrelétrica, hoje, os sistemas HVDC e FACTS assumem um novo papel estratégico como tecnologias integradoras (enabling technologies) essenciais para viabilizar a expansão das fontes de energia renovável.
 
-  O Brasil teve o seu primeiro sistema UHVDC projetado para a expansão da interligação entre as Regiões Norte/Nordeste e Sudeste/Centro-Oeste. Este sistema é composto por dois bipolos de ±800 kV, 2x4000 MW, tendo o primeiro bipolo iniciado a sua operação em dezembro de 2017 e o segundo bipolo iniciado a sua operação em agosto de 2019.
+A tecnologia de conversores VSC (Voltage Source Converter) tem apresentado um crescimento exponencial, tornando-se a escolha predominante para novos projetos de integração de renováveis ao redor do mundo. Neste contexto, destaca-se a emergência dos conversores Grid Forming (GFM), uma tecnologia fundamental para garantir a estabilidade e a inércia em sistemas dominados por eletrônica de potência, permitindo a operação segura de redes com alta penetração de fontes intermitentes. Adicionalmente, a expansão das eólicas offshore impulsiona o desenvolvimento de sistemas MTDC (Multi-Terminal DC) e hubs de energia, como observado em projetos de grande porte no Mar do Norte.
 
-  Neste cenário, o presente Workshop e Tutorial tem como principal proposta promover a discussão de aspectos relevantes associados a sistemas de transmissão em HVDC e UHVDC, onde se destacam a experiência brasileira na implantação dos sistemas de transmissão associados às Usinas Hidroelétricas de Itaipu, Madeira e Belo Monte, a avaliação da nova regulação dos sistemas de HVDC no Brasil e de sua influência na confiabilidade e remuneração dos investimentos, a análise, escolha do solo, projeto e medições associadas aos eletrodos de aterramento de sistemas de HVDC e UHVDC no Brasil, aos desafios e perspectivas de viabilidade para a modernização de sistemas de HVDC em operação no Sistema Elétrico Brasileiro e ao desenvolvimento de novos programas computacionais para simulação dinâmica e transitória de sistemas elétricos de grande porte considerando a operação de múltiplos elos de HVDC.
-`;
+Neste cenário de evolução tecnológica acelerada, o presente Workshop e Tutorial tem como proposta central discutir como o HVDC e os FACTS atuam como vetores dessa integração renovável. Serão abordados temas de fronteira, incluindo:
+• A transição e coexistência entre as tecnologias LCC clássicas e as novas aplicações VSC;
+
+• O estado da arte em controle Grid Forming e seus requisitos técnicos para suporte à rede;
+
+• Desafios e soluções para a conexão de eólicas offshore e a formação de redes MTDC;
+
+• Aplicações de FACTS para otimização e flexibilidade de sistemas de transmissão existentes frente à variabilidade das renováveis;
+
+• Aspectos de planejamento, operação e manutenção de ativos em um sistema descarbonizado.
+
+O evento reunirá a visão de diversos agentes — incluindo operadores de sistema, fabricantes, empresas de transmissão, consultorias e a Academia — para debater as especificações, estudos de simulação e as tendências que moldarão o sistema elétrico do futuro, alinhando a experiência brasileira às inovações observadas internacionalmente.`;
 
 export const COMMITTEE_TEXT = `
   O CIGRE-Brasil - Comitê Nacional Brasileiro de Produção e Transmissão de Energia Elétrica - é uma sociedade civil, sem fins lucrativos, fundada em 1971, que tem por objetivo promover o intercâmbio e desenvolvimento técnico, tecnológico, e da engenharia no Brasil, no campo da produção de energia elétrica, de sua transmissão em alta tensão e distribuição.
@@ -193,14 +210,19 @@ export const COMMITTEE_TEXT = `
 `;
 
 export const SCHEDULE_DAY_1: ScheduleItem[] = [
-  { time: '08:30', activity: 'Credenciamento e Welcome Coffee', speaker: 'Equipe de Recepção', type: 'registration' },
-  { time: '09:00', activity: 'Sessão de Abertura: Visão Geral do Setor', speaker: 'Comitê Organizador', type: 'session' },
-  { time: '10:30', activity: 'Coffee Break e Networking', speaker: '-', type: 'break' },
-  { time: '11:00', activity: 'Painel 1: Experiência Brasileira em HVDC', speaker: 'Especialistas Convidados', type: 'session' },
-  { time: '12:30', activity: 'Almoço Livre', speaker: '-', type: 'lunch' },
-  { time: '14:00', activity: 'Sessão Técnica: Aplicações de FACTS', speaker: 'Autores de Trabalhos', type: 'session' },
-  { time: '15:30', activity: 'Coffee Break', speaker: '-', type: 'break' },
-  { time: '16:00', activity: 'Integração de Renováveis: Desafios e Soluções', speaker: 'Mesa Redonda', type: 'session' },
+  { time: '08:30 - 09:00', activity: 'Credenciamento', speaker: '-', type: 'registration' },
+  { time: '09:00 - 09:10', activity: 'Abertura e Panorama atual do Grupo de Estudo CE-B4 (Brasil)', speaker: 'Thomas Moreira Campello (CEFET)', type: 'session' },
+  { time: '09:10 - 10:10', activity: 'Conceitos Básicos e Aplicações de Sistemas HVDC VSC', speaker: 'Antonio Ricardo de Mattos Tenório (ONS)', type: 'session' },
+  { time: '10:10 - 10:40', activity: 'Coffe-break', speaker: '-', type: 'break' },
+  { time: '10:40 - 11:20', activity: 'Sistemas VSC-MMC e características operativas', speaker: 'Paulo Max Maciel Portugal (COPPE)', type: 'session' },
+  { time: '11:20 - 12:00', activity: 'Desafios para Expansão da Transmissão HVDC no País', speaker: 'Dourival de Souza Carvalho Junior (EPE)', type: 'session' },
+  { time: '12:00 - 13:30', activity: 'Almoço Livre', speaker: '-', type: 'lunch' },
+  { time: '13:30 - 14:30', activity: 'Utilização de STATCOMs no Brasil e no mundo: uma tecnologia para propiciar a transição energética', speaker: 'Antonio Ricardo de Mattos Tenório (ONS)', type: 'session' },
+  { time: '14:30 - 15:30', activity: 'Aplicação de Eletrônica de Potência para a interface de fontes renováveis com o SIN (Wind Onshore, Offshore/PV)', speaker: 'Robson Dias (COPPE)', type: 'session' },
+  { time: '15:30 - 16:00', activity: 'Coffe-Break', speaker: '-', type: 'break' },
+  { time: '16:00 - 17:00', activity: 'Desafios considerando a integração de fontes renováveis (Wind Power Onshore / PV) no SIN', speaker: 'Paulo Eduardo Martins Quintão (ONS)', type: 'session' },
+  { time: '17:00 - 18:00', activity: 'Mesa redonda: Tópicos Relevantes sobre VSC e IBR', speaker: 'Todos palestrantes do 1º dia', type: 'session' },
+  { time: '19:00', activity: 'Jantar de Confraternização (Local a confirmar)', speaker: '-', type: 'lunch' },
 ];
 
 export const SCHEDULE_DAY_2: ScheduleItem[] = [

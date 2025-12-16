@@ -13,7 +13,7 @@ const Header: React.FC = () => {
     { name: 'Local', href: '#local' },
     { name: 'Programação', href: '#programacao' },
     { name: 'Patrocinadores', href: '#patrocinio' },
-    { name: 'Comitê Organizador', href: '#comite' },
+    // { name: 'Comitê Organizador', href: '#comite' }, // Comentado conforme solicitado
     { name: 'Conheça o B4', href: '#conheca-comite' },
     { name: 'Inscreva-se', href: '#inscricao' },
   ];

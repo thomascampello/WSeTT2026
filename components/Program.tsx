@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { SCHEDULE_DAY_1, SCHEDULE_DAY_2 } from '../constants';
 import { ScheduleItem } from '../types';
@@ -10,23 +11,16 @@ const Program: React.FC = () => {
 
   const renderRow = (item: ScheduleItem, index: number) => {
     let rowClass = "border-b border-gray-100 hover:bg-gray-50 transition-colors";
-    let timeClass = "font-mono text-sm font-semibold text-cigre-green";
-    let activityClass = "font-medium text-gray-900";
+    // Increased text size for time to text-base to match others
+    let timeClass = "font-mono text-base font-semibold text-cigre-green";
+    let activityClass = "font-medium text-base text-gray-900";
     
     // Estilos especiais para intervalos
     if (item.type === 'break' || item.type === 'lunch') {
       rowClass = "bg-amber-50/60 border-b border-amber-100";
-      timeClass = "font-mono text-sm font-bold text-amber-700";
-      activityClass = "font-bold text-amber-900 italic flex items-center gap-2";
+      timeClass = "font-mono text-base font-bold text-amber-700";
+      activityClass = "font-bold text-base text-amber-900 flex items-center gap-2";
     }
-
-    // Ícone para intervalo
-    const getIcon = () => {
-        if (item.type === 'break') return <span className="text-xl">☕</span>;
-        if (item.type === 'lunch') return <span className="text-xl">🍽️</span>;
-        if (item.type === 'registration') return <span className="text-xl">📝</span>;
-        return null;
-    };
 
     return (
       <tr key={index} className={rowClass}>
@@ -35,11 +29,10 @@ const Program: React.FC = () => {
         </td>
         <td className="py-4 px-4">
            <div className={activityClass}>
-             {getIcon()}
              {item.activity}
            </div>
         </td>
-        <td className="py-4 px-4 text-gray-600 text-sm hidden sm:table-cell">
+        <td className="py-4 px-4 text-gray-700 text-base font-medium hidden sm:table-cell">
            {item.speaker}
         </td>
       </tr>
@@ -67,7 +60,7 @@ const Program: React.FC = () => {
                         : 'text-gray-500 hover:text-gray-700'
                     }`}
                 >
-                    Dia 17/03 (Terça)
+                    Tutorial (17/03)
                 </button>
                 <button
                     onClick={() => setActiveTab('day2')}
@@ -77,7 +70,7 @@ const Program: React.FC = () => {
                         : 'text-gray-500 hover:text-gray-700'
                     }`}
                 >
-                    Dia 18/03 (Quarta)
+                    Workshop (18/03)
                 </button>
             </div>
         </div>
@@ -88,7 +81,7 @@ const Program: React.FC = () => {
                 <table className="w-full text-left border-collapse">
                     <thead>
                         <tr className="bg-cigre-green text-white">
-                            <th className="py-4 px-4 font-bold text-sm uppercase tracking-wider w-32">Horário</th>
+                            <th className="py-4 px-4 font-bold text-sm uppercase tracking-wider w-40">Horário</th>
                             <th className="py-4 px-4 font-bold text-sm uppercase tracking-wider">Atividade</th>
                             <th className="py-4 px-4 font-bold text-sm uppercase tracking-wider hidden sm:table-cell w-1/3">Palestrante / Responsável</th>
                         </tr>

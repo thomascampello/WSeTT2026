@@ -47,8 +47,8 @@ function App() {
         {/* 7. Seja um patrocinador (CTA) - Movido para cá */}
         <SponsorshipCTA />
         
-        {/* 8. Comitê Organizador */}
-        <CommitteeCarousel />
+        {/* 8. Comitê Organizador - Comentado conforme solicitado */}
+        {/* <CommitteeCarousel /> */}
         
         {/* 9. Conheça o B4 */}
         <AboutB4 />

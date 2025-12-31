@@ -44,10 +44,10 @@ function App() {
         {/* 6. Patrocinador (Lista de Logos Estática) */}
         <SponsorsList />
         
-        {/* 7. Seja um patrocinador (CTA) - Movido para cá */}
+        {/* 7. Seja um patrocinador (CTA) */}
         <SponsorshipCTA />
         
-        {/* 8. Comitê Organizador - Comentado conforme solicitado */}
+        {/* 8. Comitê Organizador - Comentado conforme solicitado anteriormente */}
         {/* <CommitteeCarousel /> */}
         
         {/* 9. Conheça o B4 */}

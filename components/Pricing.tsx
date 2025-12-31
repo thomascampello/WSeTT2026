@@ -1,12 +1,16 @@
 
 import React from 'react';
-import { PRICING_TIERS, DISCOUNT_DEADLINE, calculateDiscountedPrice, CANCELLATION_POLICY } from '../constants';
+import { PRICING_TIERS, DISCOUNT_DEADLINE, calculateDiscountedPrice, CANCELLATION_POLICY, REGISTRATION_URL } from '../constants';
 
 const Pricing: React.FC = () => {
   const isDiscountActive = true; 
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+  };
+
+  const handleRegistration = () => {
+    window.open(REGISTRATION_URL, '_blank');
   };
 
   return (
@@ -43,8 +47,6 @@ const Pricing: React.FC = () => {
 
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{tier.name}</h3>
                 
-                {/* Removed Student Limit Badge as requested */}
-
                 <p className="text-gray-500 text-sm mb-6 h-12 leading-snug">{tier.description}</p>
                 
                 {/* Unified Price Box */}
@@ -78,14 +80,14 @@ const Pricing: React.FC = () => {
         <div className="flex justify-center mb-16">
             <button 
                 type="button"
-                onClick={() => alert(`As inscrições abrem em Janeiro!`)}
+                onClick={handleRegistration}
                 className="px-12 py-4 rounded-full font-bold text-lg bg-cigre-green text-white hover:bg-emerald-800 transition-all shadow-lg shadow-emerald-900/20 transform hover:-translate-y-1"
             >
                 Inscreva-se Agora
             </button>
         </div>
 
-        {/* Common Benefits Section - Reduced size */}
+        {/* Common Benefits Section */}
         <div className="bg-white border border-gray-200 rounded-2xl py-6 px-4 md:px-8 shadow-sm mb-12 max-w-6xl mx-auto">
             <h3 className="text-lg font-bold text-gray-900 mb-6 text-center">
                 O que está incluso na inscrição?
@@ -124,7 +126,7 @@ const Pricing: React.FC = () => {
 
         {/* Cancellation Policy and Warnings */}
         <div className="max-w-4xl mx-auto bg-gray-50 p-6 rounded-xl text-sm text-gray-600 border border-gray-100">
-            {/* Warning Box Moved Above Title */}
+            {/* Warning Box */}
             <div className="mb-6 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-800 text-xs sm:text-sm space-y-2">
                 <p><strong>Atenção:</strong> As vagas para Estudantes e Sócios Estudante são limitadas a 10% das vagas totais.</p>
                 <p><strong>Observação importante:</strong> Os valores promocionais indicados acima (-20%) só serão válidos para inscrições efetivadas e pagas dentro da data estipulada da promoção ({DISCOUNT_DEADLINE}).</p>
@@ -132,12 +134,20 @@ const Pricing: React.FC = () => {
 
             <h4 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
                 <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                Política de Cancelamento e Alteração
+                Política de Nota Fiscal e Cancelamento
             </h4>
 
-            <div className="space-y-1 ml-2 pl-4 border-l border-gray-200">
-                {CANCELLATION_POLICY.split('\n').map((line, idx) => (
-                    line.trim() && <p key={idx}>{line}</p>
+            <div className="space-y-4 ml-2 pl-4 border-l border-gray-200">
+                {CANCELLATION_POLICY.split('\n\n').map((paragraph, idx) => (
+                    paragraph.trim() && (
+                        <div key={idx}>
+                            {paragraph.split('\n').map((line, lidx) => (
+                                <p key={`${idx}-${lidx}`} className={line.includes('ATENÇÃO') || line.includes('CANCELAMENTO') ? 'font-bold text-gray-900 mb-1' : 'mb-1'}>
+                                    {line}
+                                </p>
+                            ))}
+                        </div>
+                    )
                 ))}
             </div>
         </div>

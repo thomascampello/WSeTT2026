@@ -3,14 +3,15 @@ import React, { useState } from 'react';
 import Modal from './Modal';
 import { SPONSORSHIP_DATA } from '../constants';
 
-// --- Subcomponentes Estáticos (Lista Principal e CTA) permanecem iguais ---
+// --- Subcomponentes Estáticos (Lista Principal e CTA) ---
 
 // Subcomponente para a Lista Estática de Logos
 export const SponsorsList: React.FC = () => {
-    // Reduzido para apenas 1 patrocinador Ouro e comentados os outros conforme solicitado
-    const goldSponsors = [1]; 
-    // const silverSponsors = [1, 2, 3];
-    // const bronzeSponsors = [1, 2];
+    // Lista de patrocinadores Ouro com Hitachi e GE Vernova
+    const goldSponsors = [
+        { id: 1, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' },
+        { id: 2, src: '/Imgs/GE_Vernova_Logo.png', alt: 'GE Vernova' }
+    ]; 
 
     return (
         <section id="patrocinio" className="py-24 bg-gray-50 scroll-mt-24 relative overflow-hidden">
@@ -35,12 +36,12 @@ export const SponsorsList: React.FC = () => {
                         <div className="h-[2px] w-16 bg-yellow-400"></div>
                     </div>
                     <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-                        {goldSponsors.map((id) => (
-                            <div key={`gold-${id}`} className="group relative w-full max-w-md">
+                        {goldSponsors.map((sponsor) => (
+                            <div key={`gold-${sponsor.id}`} className="group relative w-full max-w-md">
                                 <div className="bg-white rounded-2xl p-10 flex items-center justify-center h-64 w-full shadow-lg hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-2 border-2 border-yellow-400/20">
                                     <img 
-                                        src="/Imgs/Hitachi_Global_Logo_Black_PANTONE.png" 
-                                        alt="Hitachi Energy" 
+                                        src={sponsor.src} 
+                                        alt={sponsor.alt} 
                                         className="h-auto w-auto max-h-32 max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
                                     />
                                 </div>
@@ -48,58 +49,6 @@ export const SponsorsList: React.FC = () => {
                         ))}
                     </div>
                 </div>
-
-                {/* Categoria PRATA (Comentada) */}
-                {/*
-                <div className="mb-16">
-                    <div className="flex items-center justify-center gap-4 mb-10">
-                        <div className="h-[1px] w-12 bg-gray-400"></div>
-                        <h3 className="text-xl font-bold text-gray-500 uppercase tracking-[0.2em]">
-                            Patrocínio Prata
-                        </h3>
-                        <div className="h-[1px] w-12 bg-gray-400"></div>
-                    </div>
-                    <div className="flex flex-wrap justify-center gap-8">
-                        {silverSponsors.map((id) => (
-                            <div key={`silver-${id}`} className="group relative w-full max-w-sm">
-                                <div className="bg-white rounded-xl p-8 flex items-center justify-center h-48 w-full shadow hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-1 border border-gray-200">
-                                    <img 
-                                        src="/Imgs/Hitachi_Global_Logo_Black_PANTONE.png" 
-                                        alt="Patrocinador Prata" 
-                                        className="h-auto w-auto max-h-20 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-500 opacity-80 hover:opacity-100"
-                                    />
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                */}
-
-                {/* Categoria BRONZE (Comentada) */}
-                {/*
-                <div className="mb-20">
-                    <div className="flex items-center justify-center gap-4 mb-10">
-                        <div className="h-[1px] w-8 bg-orange-300"></div>
-                        <h3 className="text-lg font-bold text-orange-700/70 uppercase tracking-[0.15em]">
-                            Patrocínio Bronze
-                        </h3>
-                        <div className="h-[1px] w-8 bg-orange-300"></div>
-                    </div>
-                    <div className="flex flex-wrap justify-center gap-6">
-                        {bronzeSponsors.map((id) => (
-                            <div key={`bronze-${id}`} className="group relative w-full max-w-xs">
-                                <div className="bg-white rounded-lg p-6 flex items-center justify-center h-36 w-full shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
-                                    <img 
-                                        src="/Imgs/Hitachi_Global_Logo_Black_PANTONE.png" 
-                                        alt="Patrocinador Bronze" 
-                                        className="h-auto w-auto max-h-14 max-w-full object-contain grayscale opacity-70 hover:opacity-100 transition-all duration-300"
-                                    />
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                */}
 
                 {/* Categoria ORGANIZAÇÃO */}
                 <div className="mb-12">
@@ -216,30 +165,15 @@ const Sponsors: React.FC = () => {
       id: 'gold',
       label: 'Patrocínio Ouro',
       badgeColor: 'bg-yellow-100 text-yellow-800 border-yellow-200',
-      logos: [1].map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })), // Apenas 1 logo
-      imgClass: '' // Classe específica removida aqui pois será controlada pelo container
-    },
-    /*
-    {
-      id: 'silver',
-      label: 'Patrocínio Prata',
-      badgeColor: 'bg-gray-100 text-gray-700 border-gray-200',
-      logos: [1, 2, 3].map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })),
-      imgClass: 'opacity-80'
-    },
-    {
-      id: 'bronze',
-      label: 'Patrocínio Bronze',
-      badgeColor: 'bg-orange-100 text-orange-800 border-orange-200',
-      logos: [1, 2].map(id => ({ id, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' })),
-      imgClass: 'opacity-70'
+      logos: [
+        { id: 1, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' },
+        { id: 2, src: '/Imgs/GE_Vernova_Logo.png', alt: 'GE Vernova' }
+      ],
+      imgClass: '' 
     }
-    */
   ];
 
   // Componente que renderiza a sequência completa (Inline)
-  // Utiliza flex-shrink-0 para garantir que o conteúdo não seja comprimido
-  // min-w-full garante que o conteúdo ocupe pelo menos a largura da tela para o loop
   const MarqueeContent = () => (
     <div className="flex items-center justify-around min-w-full flex-shrink-0 gap-8 px-8">
       {groups.map((group) => (
@@ -253,7 +187,7 @@ const Sponsors: React.FC = () => {
           </span>
           
           {/* Logos do Grupo */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-8">
             {group.logos.map((logo, idx) => (
                <div 
                  key={`${group.id}-${logo.id}-${idx}`}
@@ -268,7 +202,7 @@ const Sponsors: React.FC = () => {
             ))}
           </div>
           
-          {/* Divisor Visual (opcional, para separar tiers) */}
+          {/* Divisor Visual */}
           <div className="w-px h-8 bg-gray-200 hidden md:block ml-2"></div>
         </div>
       ))}
@@ -284,10 +218,9 @@ const Sponsors: React.FC = () => {
         }
         .animate-marquee-infinite {
           animation: marquee-infinite 30s linear infinite;
-          width: fit-content; /* Ensure container fits the content width naturally */
-          min-width: 200%; /* Ensure it's wide enough for the 50% shift */
+          width: fit-content;
+          min-width: 200%;
         }
-        /* Pausa a animação ao passar o mouse */
         .group-marquee:hover .animate-marquee-infinite {
           animation-play-state: paused;
         }
@@ -302,7 +235,6 @@ const Sponsors: React.FC = () => {
                 <span className="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Nossos</span>
                 <span className="text-xs sm:text-sm font-bold text-cigre-green uppercase tracking-wider whitespace-nowrap">Patrocinadores</span>
             </div>
-            {/* Fade right edge of the label box */}
             <div className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-l from-transparent to-white/0"></div>
         </div>
         
@@ -315,7 +247,6 @@ const Sponsors: React.FC = () => {
             }}
         >
             <div className="flex animate-marquee-infinite">
-                {/* Renderizamos o conteúdo duas vezes para criar o loop infinito perfeito sem gaps */}
                 <MarqueeContent />
                 <MarqueeContent />
             </div>

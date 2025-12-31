@@ -7,16 +7,12 @@ const Program: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'day1' | 'day2'>('day1');
 
   const day1Schedule: ScheduleItem[] = SCHEDULE_DAY_1;
-  // day2Schedule is currently unused in the render when activeTab is 'day2' due to the teaser view
-  // const day2Schedule: ScheduleItem[] = SCHEDULE_DAY_2;
 
   const renderRow = (item: ScheduleItem, index: number) => {
     let rowClass = "border-b border-gray-100 hover:bg-gray-50 transition-colors";
-    // Increased text size for time to text-base to match others
     let timeClass = "font-mono text-base font-semibold text-cigre-green";
     let activityClass = "font-medium text-base text-gray-900";
     
-    // Estilos especiais para intervalos
     if (item.type === 'break' || item.type === 'lunch') {
       rowClass = "bg-amber-50/60 border-b border-amber-100";
       timeClass = "font-mono text-base font-bold text-amber-700";
@@ -78,7 +74,6 @@ const Program: React.FC = () => {
 
         {/* Content Area */}
         {activeTab === 'day1' ? (
-            /* Tabela do Dia 1 (Tutorial) */
             <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden animate-fade-in">
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
@@ -99,9 +94,7 @@ const Program: React.FC = () => {
                 </div>
             </div>
         ) : (
-            /* Teaser do Dia 2 (Workshop) */
             <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 md:p-12 text-center animate-fade-in relative overflow-hidden">
-                 {/* Decorative background elements */}
                  <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-cigre-green/5 rounded-full blur-3xl"></div>
                  <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-cigre-accent/5 rounded-full blur-3xl"></div>
                  
@@ -121,7 +114,7 @@ const Program: React.FC = () => {
                     </p>
                     
                     <div className="grid md:grid-cols-2 gap-6 text-left mb-12">
-                        {/* Card Hitachi */}
+                        {/* Card Hitachi Energy & GE Vernova */}
                         <div className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border border-gray-100 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
                             <div className="flex items-start gap-4">
                                 <div className="bg-yellow-100 p-3 rounded-xl text-yellow-700 mt-1 shadow-sm group-hover:bg-yellow-400 group-hover:text-white transition-colors">
@@ -130,9 +123,9 @@ const Program: React.FC = () => {
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-gray-900 text-xl mb-2">Destaque Hitachi Energy</h4>
+                                    <h4 className="font-bold text-gray-900 text-xl mb-2">Destaque Hitachi Energy & GE Vernova</h4>
                                     <p className="text-gray-600 text-sm leading-relaxed">
-                                        Duas palestras exclusivas confirmadas, onde especialistas apresentarão inovações críticas e o futuro das tecnologias HVDC e FACTS.
+                                        Palestras exclusivas confirmadas de nossas patrocinadoras Ouro, onde especialistas apresentarão inovações críticas e o futuro das tecnologias HVDC e FACTS.
                                     </p>
                                 </div>
                             </div>
@@ -149,7 +142,7 @@ const Program: React.FC = () => {
                                 <div>
                                     <h4 className="font-bold text-gray-900 text-xl mb-2">Grandes Players do Setor</h4>
                                     <p className="text-gray-600 text-sm leading-relaxed">
-                                        Patrocinadores e parceiros compartilharão cases reais, desafios superados e as tendências que estão transformando o mercado de energia.
+                                        Empresas líderes compartilharão cases reais, desafios superados e as tendências que estão transformando o mercado de energia através da eletrônica de potência.
                                     </p>
                                 </div>
                             </div>

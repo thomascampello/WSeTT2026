@@ -12,12 +12,15 @@ export const DISCOUNT_PERCENTAGE = 0.20;
 
 export const CIGRE_ADDRESS = "Praia de Botafogo, 228 - Conj. 1702 - Botafogo, Rio de Janeiro - RJ, 22250-040";
 export const CIGRE_EMAIL = "eventos@cigre.org.br";
+export const REGISTRATION_URL = "https://eventos.sig-cigre.org.br/evento/115/registrar";
 
 export const CANCELLATION_POLICY = `
-  Cancelamentos devem ser solicitados por escrito para o e-mail oficial do evento.
-  - Até 30 dias antes do evento: Reembolso de 80% do valor pago.
-  - De 29 a 15 dias antes do evento: Reembolso de 50% do valor pago.
-  - Menos de 15 dias antes do evento: Não haverá reembolso, apenas substituição de participante permitida até 48h antes do início.
+  ATENÇÃO: A Nota Fiscal referente à inscrição será emitida 10 dias após a confirmação do pagamento da Inscrição.
+
+  SOBRE O CANCELAMENTO:
+  Regra 1: Em caso de cancelamento de inscrição paga até 10 dias antes do evento, o prazo para devolução será de 10 dias após a confirmação da solicitação.
+  Regra 2: Em caso de cancelamento de Inscrição do nono dia antes até a véspera do Evento, o valor devolvido será de 50% do valor pago e o prazo de devolução será de 10 dias após a solicitação.
+  Regra 3: Não haverá devolução de inscrição para solicitações de cancelamento no dia do evento e posteriori.
 `;
 
 // Helper function to calculate price with specific rounding rules

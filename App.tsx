@@ -70,9 +70,9 @@ function App() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 className="text-xl font-bold text-gray-900 mb-2">Programação em Breve!</h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-2">Programação Completa em Breve!</h3>
           <p className="text-gray-500 mb-6">
-            A programação completa detalhada será liberada no início de <strong>Janeiro de 2026</strong>.
+            A programação completa e detalhada será liberada até o início de <strong>Fevereiro de 2026</strong>.
           </p>
           
           <div className="bg-cigre-accent/10 p-4 rounded-lg border border-cigre-accent/30 mb-6">

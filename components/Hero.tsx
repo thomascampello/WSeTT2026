@@ -4,14 +4,14 @@ import { EVENT_DATE, EVENT_LOCATION } from '../constants';
 
 const Hero: React.FC = () => {
   // Data fixa da última atualização manual do site
-  const lastUpdated = "11/02/2025";
+  const lastUpdated = "05/01/2026";
 
   return (
     <div id="home" className="relative bg-cigre-green h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
       
-      {/* Background Image - Imagem fornecida pelo usuário */}
+      {/* Background Image - Referência absoluta para pasta public */}
       <img 
-        src="/Imgs/hero_banner.png" 
+        src="/Imgs/Banner_Site.png" 
         alt="Banner Workshop CIGRE CE B4" 
         className="absolute inset-0 w-full h-full object-cover z-0"
       />

@@ -77,74 +77,11 @@ export const SPONSORSHIP_DATA = {
 export const EVENT_COMMITTEE: CommitteeMember[] = [
   {
     id: 1,
-    name: 'Fulaninho da Silva',
-    role: 'Organização Geral',
-    image: 'https://ui-avatars.com/api/?name=Fulaninho+da+Silva&background=006633&color=fff',
-    bio: 'Engenheiro Eletricista com mais de 20 anos de experiência em sistemas de potência. Atuou em grandes projetos de infraestrutura energética no Brasil e no exterior.'
-  },
-  {
-    id: 2,
-    name: 'Ciclaninho Souza',
-    role: 'Logística',
-    image: 'https://ui-avatars.com/api/?name=Ciclaninho+Souza&background=006633&color=fff',
-    bio: 'Especialista em logística de eventos técnicos e corporativos. Responsável pela coordenação de infraestrutura e operações do workshop.'
-  },
-  {
-    id: 3,
-    name: 'Joãozinho Santos',
-    role: 'Técnico',
-    image: 'https://ui-avatars.com/api/?name=Joaozinho+Santos&background=006633&color=fff',
-    bio: 'Pesquisador sênior em HVDC e FACTS. Autor de diversos artigos técnicos publicados em revistas internacionais e membro ativo do CIGRE.'
-  },
-  {
-    id: 4,
-    name: 'Maria Oliveira',
-    role: 'Comunicação',
-    image: 'https://ui-avatars.com/api/?name=Maria+Oliveira&background=006633&color=fff',
-    bio: 'Jornalista especializada no setor de energia. Gerencia a comunicação institucional e assessoria de imprensa do evento.'
-  },
-  {
-    id: 5,
-    name: 'José Pereira',
-    role: 'Financeiro',
-    image: 'https://ui-avatars.com/api/?name=Jose+Pereira&background=006633&color=fff',
-    bio: 'Economista com MBA em Gestão de Projetos. Responsável pelo planejamento financeiro e captação de recursos.'
-  },
-  {
-    id: 6,
-    name: 'Ana Costa',
-    role: 'Secretaria',
-    image: 'https://ui-avatars.com/api/?name=Ana+Costa&background=006633&color=fff',
-    bio: 'Secretária executiva bilíngue com ampla experiência em organização de eventos internacionais.'
-  },
-  {
-    id: 7,
-    name: 'Carlos Lima',
-    role: 'Apoio Técnico',
-    image: 'https://ui-avatars.com/api/?name=Carlos+Lima&background=006633&color=fff',
-    bio: 'Engenheiro de sistemas de transmissão. Presta suporte técnico na avaliação de trabalhos e estruturação da grade técnica.'
-  },
-  {
-    id: 8,
-    name: 'Fernanda Rocha',
-    role: 'Marketing',
-    image: 'https://ui-avatars.com/api/?name=Fernanda+Rocha&background=006633&color=fff',
-    bio: 'Publicitária focada em marketing digital para eventos científicos. Coordena as campanhas de divulgação nas redes sociais.'
-  },
-  {
-    id: 9,
-    name: 'Paulo Martins',
-    role: 'Logística Local',
-    image: 'https://ui-avatars.com/api/?name=Paulo+Martins&background=006633&color=fff',
-    bio: 'Gerente de operações local no Rio de Janeiro. Cuida das parcerias com hotéis, transporte e fornecedores locais.'
-  },
-  {
-    id: 10,
-    name: 'Juliana Mendes',
-    role: 'Credenciamento',
-    image: 'https://ui-avatars.com/api/?name=Juliana+Mendes&background=006633&color=fff',
-    bio: 'Coordenadora de atendimento. Responsável pelo sistema de inscrições e recepção dos participantes no dia do evento.'
-  },
+    name: 'Comitê Organizador',
+    role: 'Coordenador Local',
+    image: 'https://ui-avatars.com/api/?name=CIGRE+Brasil&background=006633&color=fff',
+    bio: 'Equipe técnica responsável pela infraestrutura do evento.'
+  }
 ];
 
 export const CEB4_COORDINATION: CommitteeMember[] = [

@@ -10,7 +10,7 @@ export const SponsorsList: React.FC = () => {
     // Lista de patrocinadores Ouro com Hitachi e GE Vernova
     const goldSponsors = [
         { id: 1, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' },
-        { id: 2, src: '/Imgs/GE_Vernova_Logo.png', alt: 'GE Vernova' }
+        { id: 2, src: '/Imgs/GE_Vernova_Standard_RGB_Evergreen.ai.png', alt: 'GE Vernova' }
     ]; 
 
     return (
@@ -167,7 +167,7 @@ const Sponsors: React.FC = () => {
       badgeColor: 'bg-yellow-100 text-yellow-800 border-yellow-200',
       logos: [
         { id: 1, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' },
-        { id: 2, src: '/Imgs/GE_Vernova_Logo.png', alt: 'GE Vernova' }
+        { id: 2, src: '/Imgs/GE_Vernova_Standard_RGB_Evergreen.ai.png', alt: 'GE Vernova' }
       ],
       imgClass: '' 
     }

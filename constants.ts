@@ -75,13 +75,16 @@ export const SPONSORSHIP_DATA = {
 };
 
 export const EVENT_COMMITTEE: CommitteeMember[] = [
-  {
-    id: 1,
-    name: 'Comitê Organizador',
-    role: 'Coordenador Local',
-    image: 'https://ui-avatars.com/api/?name=CIGRE+Brasil&background=006633&color=fff',
-    bio: 'Equipe técnica responsável pela infraestrutura do evento.'
-  }
+  { id: 1, name: 'Thomas Moreira Campello', role: 'Membro', bio: 'CEFET/RJ', initials: 'TC', image: 'thomas.campello@cefet-rj.br' },
+  { id: 2, name: 'Trevor M. C. Vilella do Carmo Dobbin', role: 'Membro', bio: 'Transpetro', initials: 'TD', image: 'trevor@nyquist.com.br' },
+  { id: 3, name: 'Sérgio do Espírito Santo', role: 'Membro', bio: 'ESP Consultoria', initials: 'SS', image: 'sesanto@espconsult.com.br' },
+  { id: 4, name: 'Antonio Ricardo de Mattos Tenório', role: 'Membro', bio: 'ONS', initials: 'AT', image: 'ricardo.tenorio@ons.org.br' },
+  { id: 5, name: 'Dourival de Souza Carvalho Junior', role: 'Membro', bio: 'EPE', initials: 'DJ', image: 'dourival.carvalho@epe.gov.br' },
+  { id: 6, name: 'Paulo Max Maciel Portugal', role: 'Membro', bio: 'COPPE/UFRJ', initials: 'PP', image: 'pmaxport@gmail.com' },
+  { id: 7, name: 'Fernando Cattan Jusan', role: 'Membro', bio: 'ONS', initials: 'FJ', image: 'fernando.jusan@ons.org.br' },
+  { id: 8, name: 'Paulo Edmundo Freire', role: 'Membro', bio: 'PAIOL Engenharia', initials: 'PF', image: 'paulofreire@paiolengenharia.com.br' },
+  { id: 9, name: 'Paulo Cesar Vaz Esmeraldo', role: 'Membro', bio: 'Power Consult', initials: 'PE', image: 'paulo.esmeraldo@pcveeng.com.br' },
+  { id: 10, name: 'John Graham', role: 'Membro', bio: 'Consultor', initials: 'JG', image: 'john1fg@gmail.com' },
 ];
 
 export const CEB4_COORDINATION: CommitteeMember[] = [
@@ -130,24 +133,29 @@ export const CEB4_COORDINATION: CommitteeMember[] = [
 export const EVENT_DATE = '17 e 18 de Março de 2026';
 export const EVENT_LOCATION = 'Edifício Argentina - Rio de Janeiro, RJ';
 
-export const MOTIVATION_TEXT = `O desenvolvimento de aplicações de transmissão de energia elétrica em HVDC no Brasil consolidou-se historicamente através de extensivos estudos de planejamento e viabilidade, motivados pela necessidade de escoamento de grandes blocos de energia de usinas hidrelétricas distantes dos centros de carga. A tecnologia em ±600 kV foi pioneira com o sistema de Itaipu na década de 1980 e, após um hiato de 30 anos, foi retomada e expandida com o complexo do Rio Madeira e, posteriormente, com a introdução da tecnologia UHVDC em ±800 kV no sistema de Belo Monte.
+export const MOTIVATION_TEXT = `O desenvolvimento da transmissão em HVDC (High Voltage Direct Current) no Brasil ocorre inicialmente motivado pela necessidade de escoamento de grandes blocos de energia produzida por usinas hidrelétricas distantes dos centros de carga.
 
-No entanto, o cenário energético global e nacional atravessa uma transformação profunda impulsionada pela necessidade de descarbonização e pela transição energética. Se antes o foco era predominantemente o transporte de grandes blocos de geração hidrelétrica, hoje, os sistemas HVDC e FACTS assumem um novo papel estratégico como tecnologias integradoras (enabling technologies) essenciais para viabilizar a expansão das fontes de energia renovável.
+Em meio a uma transformação profunda impulsionada pela necessidade de descarbonização e transição energética os sistemas HVDC e FACTS assumem um novo papel estratégico como tecnologias integradoras (enabling technologies) essenciais para viabilizar a expansão das fontes de energia renovável.
 
-A tecnologia de conversores VSC (Voltage Source Converter) tem apresentado um crescimento exponencial, tornando-se a escolha predominante para novos projetos de integração de renováveis ao redor do mundo. Neste contexto, destaca-se a emergência dos conversores Grid Forming (GFM), uma tecnologia fundamental para garantir a estabilidade e a inércia em sistemas dominados por eletrônica de potência, permitindo a operação segura de redes com alta penetração de fontes intermitentes. Adicionalmente, a expansão das eólicas offshore impulsiona o desenvolvimento de sistemas MTDC (Multi-Terminal DC) e hubs de energia, como observado em projetos de grande porte no Mar do Norte.
+A aplicação de sistemas baseados na tecnologia VSC (Voltage Source Converter) vêm apresentando crescimento exponencial, sendo essa a escolha predominante para novos projetos de integração de renováveis por a base de cabos ao redor do mundo e linhas áreas em anos recentes.
 
-Neste cenário de evolução tecnológica acelerada, o presente Workshop e Tutorial tem como proposta central discutir como o HVDC e os FACTS atuam como vetores dessa integração renovável. Serão abordados temas de fronteira, incluindo:
-• A transição e coexistência entre as tecnologias LCC clássicas e as novas aplicações VSC;
+Neste contexto, a modalidade de controle Grid Forming (GFM) é prospectada como promessa a garantir a estabilidade e provimento de inércia em sistemas com alta penetração de conversores a base de eletrônica de potência, típicos de fontes renováveis intermitentes.
 
-• O estado da arte em controle Grid Forming e seus requisitos técnicos para suporte à rede;
+Adicionalmente, a expansão das eólicas offshore promove o desenvolvimento de Grids DC e sistemas multi-terminais MTDC e hubs de energia, como observado em projetos de grande porte no Mar do Norte.
 
-• Desafios e soluções para a conexão de eólicas offshore e a formação de redes MTDC;
+Neste cenário de evolução tecnológica acelerada, o presente Workshop e Tutorial tem como proposta central discutir as principais características dos novos sistemas HVDC e os FACTS e como estes, podem de maneira realista ofertarem soluções para a integração de geração renovável, abordando temas como:
 
-• Aplicações de FACTS para otimização e flexibilidade de sistemas de transmissão existentes frente à variabilidade das renováveis;
+* A transição e coexistência entre as tecnologias LCC clássicas e as novas aplicações VSC;
 
-• Aspectos de planejamento, operação e manutenção de ativos em um sistema descarbonizado.
+* O estado da arte em sistemas de controle, incluindo Grid Forming, requisitos técnicos para que esse efetivamente oferte suporte à rede;
 
-O evento reunirá a visão de diversos agentes — incluindo operadores de sistema, fabricantes, empresas de transmissão, consultorias e a Academia — para debater as especificações, estudos de simulação e as tendências que moldarão o sistema elétrico do futuro, alinhando a experiência brasileira às inovações observadas internacionalmente.`;
+* Desafios e soluções para a conexão de eólicas offshore e a formação de redes DC e MTDC;
+
+* Aplicações de FACTS para otimização e flexibilidade de sistemas de transmissão existentes frente à variabilidade das renováveis e melhora do perfil dinâmico de tensão;
+
+* Aspectos de planejamento, operação e manutenção de ativos em um sistema descarbonizado.
+
+O evento reúne e convida a participação de diversos agentes, com diversas visões, para debater as especificações, estudos e tendências que moldarão o sistema elétrico do futuro, alinhando a experiência brasileira às inovações observadas internacionalmente, entre esses: o Operador Nacional do Sistema (ONS), a Empresa de Pesquisa Energética (EPE), Fabricantes, Transmissoras, Geradores, Academia e outros.`;
 
 export const COMMITTEE_TEXT = `
   O CIGRE-Brasil - Comitê Nacional Brasileiro de Produção e Transmissão de Energia Elétrica - é uma sociedade civil, sem fins lucrativos, fundada em 1971, que tem por objetivo promover o intercâmbio e desenvolvimento técnico, tecnológico, e da engenharia no Brasil, no campo da produção de energia elétrica, de sua transmissão em alta tensão e distribuição.

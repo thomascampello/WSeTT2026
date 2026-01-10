@@ -1,200 +1,113 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { EVENT_COMMITTEE } from '../constants';
 import { CommitteeMember } from '../types';
 import Modal from './Modal';
 
-// Internal Slider Component with Sliding Animation
-export const TeamSlider: React.FC<{ title: string; members: CommitteeMember[]; titleColorClass: string }> = ({ 
-  title, 
-  members,
-  titleColorClass 
-}) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [selectedMember, setSelectedMember] = useState<CommitteeMember | null>(null);
-  
-  // State to track failed image loads
-  const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
-
-  const handleImageError = (id: number) => {
-    setImageErrors(prev => ({ ...prev, [id]: true }));
-  };
-
-  // Configuration
-  const desktopItems = 3;
-  const mobileItems = 1;
-  const delay = 3000; // ms
-
-  // Calculate items per page based on window width (simple check)
-  const getItemsPerPage = () => {
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      return mobileItems;
-    }
-    return desktopItems;
-  };
-  
-  // State for items visible
-  const [itemsPerPage, setItemsPerPage] = useState(desktopItems);
-
-  useEffect(() => {
-    const handleResize = () => setItemsPerPage(getItemsPerPage());
-    handleResize(); // Init
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const totalSlides = Math.ceil(members.length);
-
-  const next = () => {
-    setCurrentIndex((prev) => (prev + 1) % members.length);
-  };
-
-  const prev = () => {
-    setCurrentIndex((prev) => (prev - 1 + members.length) % members.length);
-  };
-
-  // Auto-Play Logic
-  useEffect(() => {
-    if (isPaused) return;
-
-    const timer = setInterval(() => {
-      next();
-    }, delay);
-
-    return () => clearInterval(timer);
-  }, [currentIndex, isPaused]);
-
-
-  // Calculate translate percentage
-  const translateValue = currentIndex * (100 / itemsPerPage);
-
+/**
+ * TeamSlider component for displaying a list of team members in a compact grid layout.
+ * Used for coordination groups like CE-B4.
+ */
+export const TeamSlider: React.FC<{
+  title: string;
+  members: CommitteeMember[];
+  titleColorClass?: string;
+}> = ({ title, members, titleColorClass = "text-gray-900" }) => {
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-10">
-      <div className="flex justify-between items-center mb-6 border-b pb-4">
-        <h3 className={`text-xl font-bold ${titleColorClass}`}>
-          {title}
-        </h3>
-        <div className="flex gap-2">
-          <button 
-            onClick={prev} 
-            className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors"
-            aria-label="Anterior"
-          >
-            <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-left.png" alt="<" className="w-4 h-4"/>
-          </button>
-          <button 
-            onClick={next} 
-            className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors"
-            aria-label="Próximo"
-          >
-            <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-right.png" alt=">" className="w-4 h-4"/>
-          </button>
-        </div>
-      </div>
-
-      {/* Slider Viewport */}
-      <div 
-        className="relative overflow-hidden"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        {/* Track */}
-        <div 
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${translateValue}%)` }}
-        >
-           {members.map((member, idx) => (
-             <div 
-                key={`${member.id}-${idx}`} 
-                className="flex-shrink-0 px-3 w-full md:w-1/3"
-                style={{ flexBasis: `${100 / itemsPerPage}%` }}
-             >
-               <div 
-                 onClick={() => setSelectedMember(member)}
-                 className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-xl transition-all duration-300 hover:shadow-md transform hover:-translate-y-1 cursor-pointer h-full border border-transparent hover:border-cigre-green/20"
-                >
-                  <div className="w-24 h-24 mb-4 relative">
-                    {imageErrors[member.id] || !member.image ? (
-                        <div className="w-full h-full rounded-full border-4 border-white shadow-sm bg-gradient-to-br from-cigre-green to-emerald-600 flex items-center justify-center text-white font-bold text-2xl tracking-wider">
-                            {member.initials || member.name.substring(0, 2).toUpperCase()}
-                        </div>
-                    ) : (
-                        <img 
-                          src={member.image} 
-                          alt={member.name} 
-                          onError={() => handleImageError(member.id)}
-                          className="w-full h-full object-cover rounded-full border-4 border-white shadow-sm"
-                        />
-                    )}
-                    
-                    <div className="absolute inset-0 rounded-full bg-black/0 hover:bg-black/10 transition-colors flex items-center justify-center pointer-events-none">
-                        <span className="opacity-0 group-hover:opacity-100 text-white text-xs font-bold bg-black/50 px-2 py-1 rounded-full transition-opacity">+ Info</span>
-                    </div>
+    <div className="w-full">
+      <h3 className={`text-xl font-bold mb-6 ${titleColorClass}`}>{title}</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {members.map((member) => (
+          <div key={member.id} className="flex items-center gap-4 bg-white p-4 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+            <div className="w-14 h-14 shrink-0">
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-gray-400 font-bold text-sm border border-gray-200">
+                    {member.initials || member.name.substring(0, 2).toUpperCase()}
                   </div>
-                  <h4 className="font-bold text-gray-800 text-sm md:text-base leading-tight min-h-[40px] flex items-center justify-center">{member.name}</h4>
-                  <p className="text-xs text-gray-500 mt-2 uppercase tracking-wide font-medium">{member.role}</p>
-               </div>
-             </div>
-           ))}
-        </div>
-      </div>
-
-      {/* Bio Modal */}
-      <Modal 
-        isOpen={!!selectedMember} 
-        onClose={() => setSelectedMember(null)}
-        title="Perfil"
-      >
-        {selectedMember && (
-            <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
-                <div className="w-32 h-32 flex-shrink-0">
-                    {imageErrors[selectedMember.id] || !selectedMember.image ? (
-                         <div className="w-full h-full rounded-full border-4 border-cigre-green shadow-md bg-gradient-to-br from-cigre-green to-emerald-600 flex items-center justify-center text-white font-bold text-3xl">
-                            {selectedMember.initials || selectedMember.name.substring(0, 2).toUpperCase()}
-                        </div>
-                    ) : (
-                        <img 
-                          src={selectedMember.image} 
-                          alt={selectedMember.name} 
-                          className="w-full h-full object-cover rounded-full border-4 border-cigre-green shadow-md"
-                        />
-                    )}
-                </div>
-                <div>
-                    <h3 className="text-xl font-bold text-gray-900">{selectedMember.name}</h3>
-                    <p className="text-cigre-green font-medium mb-1">{selectedMember.role}</p>
-                    {/* Show affiliation from bio if available and not redundant, but here bio contains affiliation mainly */}
-                    {selectedMember.bio && (
-                        <p className="text-gray-500 font-medium mb-4 text-sm">{selectedMember.bio}</p>
-                    )}
-                </div>
             </div>
-        )}
-      </Modal>
-
+            <div className="overflow-hidden">
+              <p className="font-bold text-gray-900 text-sm truncate">{member.name}</p>
+              <p className="text-[10px] text-cigre-green font-bold uppercase tracking-wider truncate">{member.role}</p>
+              {member.bio && <p className="text-[10px] text-gray-400 truncate mt-1">{member.bio}</p>}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-const CommitteeCarousel: React.FC = () => {
+const CommitteeSection: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <section id="comite" className="py-20 bg-cigre-gray scroll-mt-24">
+    <section id="comite" className="py-8 md:py-12 bg-white scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-          Comitê Organizador
-        </h2>
+        <div className="flex flex-col md:flex-row md:items-center justify-start gap-4 md:gap-8">
+          <div className="text-left">
+            {/* Pílula */}
+            <div className="inline-block px-3 py-1 mb-2 text-[10px] font-semibold tracking-wider text-cigre-green uppercase bg-green-50 rounded-full border border-green-100">
+                Comitê Organizador
+            </div>
+            
+            {/* Título */}
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
+                Conheça o Comitê Organizador do Evento
+            </h2>
+          </div>
 
-        {/* Carrossel: Comitê Organizador */}
-        <TeamSlider 
-          title="Membros do Comitê" 
-          members={EVENT_COMMITTEE} 
-          titleColorClass="text-cigre-green"
-        />
+          {/* Botão ao lado no desktop */}
+          <div className="shrink-0 mt-2 md:mt-6">
+            <button 
+                onClick={() => setIsModalOpen(true)}
+                className="group relative inline-flex items-center px-5 py-3 overflow-hidden text-white bg-cigre-green rounded-lg transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg focus:outline-none"
+            >
+                <span className="font-bold text-sm tracking-wide">Ver Membros</span>
+                <svg className="w-4 h-4 ml-2 transition-transform duration-300 transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+            </button>
+          </div>
+        </div>
 
+        {/* Modal com a lista */}
+        <Modal 
+            isOpen={isModalOpen} 
+            onClose={() => setIsModalOpen(false)}
+            title="Membros do Comitê Organizador"
+        >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {EVENT_COMMITTEE.map((member) => (
+                    <div key={member.id} className="p-4 bg-gray-50 rounded-xl border border-gray-100 flex flex-col items-start gap-1">
+                        <div className="flex items-center gap-3 w-full">
+                            <div className="w-10 h-10 rounded-full bg-cigre-green text-white flex items-center justify-center font-bold text-xs shrink-0">
+                                {member.initials}
+                            </div>
+                            <div className="overflow-hidden">
+                                <h4 className="font-bold text-gray-900 text-sm leading-tight truncate">{member.name}</h4>
+                                <p className="text-[10px] text-cigre-green font-bold uppercase">{member.role}</p>
+                            </div>
+                        </div>
+                        <div className="mt-2 w-full pt-2 border-t border-gray-200">
+                             <p className="text-xs text-gray-600 font-medium mb-1">
+                                <span className="text-gray-400">Instituição:</span> {member.bio}
+                             </p>
+                             {member.image && (
+                                <a href={`mailto:${member.image}`} className="text-xs text-cigre-accent hover:underline flex items-center gap-1">
+                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                    {member.image}
+                                </a>
+                             )}
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <div className="mt-6 p-4 bg-green-50 rounded-lg text-center text-xs text-cigre-green font-medium">
+                Esta equipe trabalha voluntariamente para garantir o sucesso técnico e operacional do evento.
+            </div>
+        </Modal>
       </div>
     </section>
   );
 };
 
-export default CommitteeCarousel;
+export default CommitteeSection;

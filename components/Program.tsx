@@ -10,26 +10,26 @@ const Program: React.FC = () => {
 
   const renderRow = (item: ScheduleItem, index: number) => {
     let rowClass = "border-b border-gray-100 hover:bg-gray-50 transition-colors";
-    let timeClass = "font-mono text-base font-semibold text-cigre-green";
-    let activityClass = "font-medium text-base text-gray-900";
+    let timeClass = "font-mono text-xs sm:text-base font-semibold text-cigre-green";
+    let activityClass = "font-medium text-sm sm:text-base text-gray-900";
     
     if (item.type === 'break' || item.type === 'lunch') {
       rowClass = "bg-amber-50/60 border-b border-amber-100";
-      timeClass = "font-mono text-base font-bold text-amber-700";
-      activityClass = "font-bold text-base text-amber-900 flex items-center gap-2";
+      timeClass = "font-mono text-xs sm:text-base font-bold text-amber-700";
+      activityClass = "font-bold text-sm sm:text-base text-amber-900 flex items-center gap-2";
     }
 
     return (
       <tr key={index} className={rowClass}>
-        <td className="py-4 px-4 whitespace-nowrap">
+        <td className="py-4 px-3 sm:px-4 whitespace-nowrap">
            <div className={timeClass}>{item.time}</div>
         </td>
-        <td className="py-4 px-4">
+        <td className="py-4 px-3 sm:px-4">
            <div className={activityClass}>
              {item.activity}
            </div>
         </td>
-        <td className="py-4 px-4 text-gray-700 text-base font-medium hidden sm:table-cell">
+        <td className="py-4 px-3 sm:px-4 text-gray-700 text-sm sm:text-base font-medium">
            {item.speaker}
         </td>
       </tr>
@@ -51,7 +51,7 @@ const Program: React.FC = () => {
             <div className="bg-gray-100 p-1 rounded-xl inline-flex shadow-inner">
                 <button
                     onClick={() => setActiveTab('day1')}
-                    className={`px-8 py-3 rounded-lg text-sm font-bold transition-all duration-300 ${
+                    className={`px-4 sm:px-8 py-3 rounded-lg text-xs sm:text-sm font-bold transition-all duration-300 ${
                         activeTab === 'day1' 
                         ? 'bg-white text-cigre-green shadow-md transform scale-105' 
                         : 'text-gray-500 hover:text-gray-700'
@@ -61,7 +61,7 @@ const Program: React.FC = () => {
                 </button>
                 <button
                     onClick={() => setActiveTab('day2')}
-                    className={`px-8 py-3 rounded-lg text-sm font-bold transition-all duration-300 ${
+                    className={`px-4 sm:px-8 py-3 rounded-lg text-xs sm:text-sm font-bold transition-all duration-300 ${
                         activeTab === 'day2' 
                         ? 'bg-white text-cigre-green shadow-md transform scale-105' 
                         : 'text-gray-500 hover:text-gray-700'
@@ -76,12 +76,12 @@ const Program: React.FC = () => {
         {activeTab === 'day1' ? (
             <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden animate-fade-in">
                 <div className="overflow-x-auto">
-                    <table className="w-full text-left border-collapse">
+                    <table className="w-full text-left border-collapse min-w-[600px] sm:min-w-0">
                         <thead>
                             <tr className="bg-cigre-green text-white">
-                                <th className="py-4 px-4 font-bold text-sm uppercase tracking-wider w-40">Horário</th>
-                                <th className="py-4 px-4 font-bold text-sm uppercase tracking-wider">Atividade</th>
-                                <th className="py-4 px-4 font-bold text-sm uppercase tracking-wider hidden sm:table-cell w-1/3">Palestrante / Responsável</th>
+                                <th className="py-4 px-3 sm:px-4 font-bold text-xs uppercase tracking-wider w-32 sm:w-40">Horário</th>
+                                <th className="py-4 px-3 sm:px-4 font-bold text-xs uppercase tracking-wider">Atividade</th>
+                                <th className="py-4 px-3 sm:px-4 font-bold text-xs uppercase tracking-wider w-1/4 sm:w-1/3">Palestrante / Responsável</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-100">
@@ -89,8 +89,8 @@ const Program: React.FC = () => {
                         </tbody>
                     </table>
                 </div>
-                <div className="p-4 bg-gray-50 border-t border-gray-100 text-center text-sm text-gray-500 italic">
-                    * Programação preliminar, sujeita a alterações sem aviso prévio.
+                <div className="p-4 bg-gray-50 border-t border-gray-100 text-center text-xs text-gray-500 italic">
+                    * Programação preliminar, sujeita a alterações sem aviso prévio. Utilize o scroll lateral se necessário em dispositivos pequenos.
                 </div>
             </div>
         ) : (

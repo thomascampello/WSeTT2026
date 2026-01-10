@@ -5,9 +5,7 @@ import { SPONSORSHIP_DATA } from '../constants';
 
 // --- Subcomponentes Estáticos (Lista Principal e CTA) ---
 
-// Subcomponente para a Lista Estática de Logos
 export const SponsorsList: React.FC = () => {
-    // Lista de patrocinadores Ouro com Hitachi e GE Vernova
     const goldSponsors = [
         { id: 1, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' },
         { id: 2, src: '/Imgs/GE_Vernova_Standard_RGB_Evergreen.ai.png', alt: 'GE Vernova' }
@@ -15,7 +13,6 @@ export const SponsorsList: React.FC = () => {
 
     return (
         <section id="patrocinio" className="py-24 bg-gray-50 scroll-mt-24 relative overflow-hidden">
-             {/* Background Decorativo Suave */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none opacity-30">
                 <div className="absolute -top-[20%] -right-[10%] w-[500px] h-[500px] bg-cigre-green/10 rounded-full blur-3xl"></div>
                 <div className="absolute top-[40%] -left-[10%] w-[400px] h-[400px] bg-cigre-accent/10 rounded-full blur-3xl"></div>
@@ -26,7 +23,6 @@ export const SponsorsList: React.FC = () => {
                     <h2 className="text-4xl font-extrabold text-gray-900 mt-2 mb-6">Patrocinadores</h2>
                 </div>
                 
-                {/* Categoria OURO */}
                 <div className="mb-20">
                     <div className="flex items-center justify-center gap-4 mb-10">
                         <div className="h-[2px] w-16 bg-yellow-400"></div>
@@ -50,7 +46,6 @@ export const SponsorsList: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Categoria ORGANIZAÇÃO */}
                 <div className="mb-12">
                     <div className="flex items-center justify-center gap-4 mb-8">
                         <div className="h-[1px] w-12 bg-gray-200"></div>
@@ -77,7 +72,6 @@ export const SponsorsList: React.FC = () => {
     );
 }
 
-// Subcomponente para a CTA de Patrocínio
 export const SponsorshipCTA: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -158,9 +152,7 @@ interface SponsorGroup {
     imgClass: string;
 }
 
-const Sponsors: React.FC = () => {
-  // Configuração dos Grupos
-  const groups: SponsorGroup[] = [
+const GROUPS: SponsorGroup[] = [
     {
       id: 'gold',
       label: 'Patrocínio Ouro',
@@ -171,44 +163,29 @@ const Sponsors: React.FC = () => {
       ],
       imgClass: '' 
     }
-  ];
+];
 
-  // Componente que renderiza a sequência completa (Inline)
-  const MarqueeContent = () => (
-    <div className="flex items-center justify-around min-w-full flex-shrink-0 gap-8 px-8">
-      {groups.map((group) => (
-        <div key={group.id} className="flex items-center gap-4 md:gap-6 shrink-0">
-          {/* Badge do Grupo (viaja junto com os logos) */}
-          <span className={`
-            px-3 py-1.5 md:px-4 md:py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border whitespace-nowrap shadow-sm
-            ${group.badgeColor}
-          `}>
+const MarqueeContent: React.FC = () => (
+    <div className="flex items-center gap-12 px-6">
+      {GROUPS.map((group) => (
+        <div key={group.id} className="flex items-center gap-6 shrink-0">
+          <span className={`px-3 py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border whitespace-nowrap shadow-sm ${group.badgeColor}`}>
             {group.label}
           </span>
-          
-          {/* Logos do Grupo */}
           <div className="flex items-center gap-8">
             {group.logos.map((logo, idx) => (
-               <div 
-                 key={`${group.id}-${logo.id}-${idx}`}
-                 className="flex items-center justify-center shrink-0 w-24 h-10 md:w-32 md:h-12"
-               >
-                   <img 
-                     src={logo.src}
-                     alt={logo.alt}
-                     className={`max-w-full max-h-full object-contain ${group.imgClass}`}
-                   />
+               <div key={`${group.id}-${logo.id}-${idx}`} className="flex items-center justify-center shrink-0 w-24 h-10 md:w-32 md:h-12">
+                   <img src={logo.src} alt={logo.alt} className="max-w-full max-h-full object-contain" />
                </div>
             ))}
           </div>
-          
-          {/* Divisor Visual */}
-          <div className="w-px h-8 bg-gray-200 hidden md:block ml-2"></div>
+          <div className="w-px h-8 bg-gray-200 ml-4"></div>
         </div>
       ))}
     </div>
-  );
+);
 
+const Sponsors: React.FC = () => {
   return (
     <>
       <style>{`
@@ -217,36 +194,28 @@ const Sponsors: React.FC = () => {
           100% { transform: translate3d(-50%, 0, 0); }
         }
         .animate-marquee-infinite {
-          animation: marquee-infinite 30s linear infinite;
-          width: fit-content;
-          min-width: 200%;
+          display: flex;
+          animation: marquee-infinite 25s linear infinite;
+          width: max-content;
         }
         .group-marquee:hover .animate-marquee-infinite {
           animation-play-state: paused;
         }
       `}</style>
       
-      {/* BARRA FIXA DE PATROCINADORES */}
-      <div className="fixed bottom-0 left-0 w-full z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] h-20 sm:h-24 flex items-center group-marquee">
+      <div className="fixed bottom-0 left-0 w-full z-[100] bg-white border-t border-gray-200 shadow-[0_-4px_12px_rgba(0,0,0,0.1)] h-20 sm:h-24 flex items-center group-marquee overflow-hidden">
         
-        {/* Label Fixa na Esquerda "NOSSOS PATROCINADORES" */}
-        <div className="flex items-center bg-white h-full px-4 sm:px-6 border-r border-gray-100 shrink-0 z-50 shadow-[5px_0_15px_-5px_rgba(0,0,0,0.05)] relative">
+        <div className="flex items-center bg-white h-full px-4 sm:px-6 border-r border-gray-100 shrink-0 z-[110] shadow-[10px_0_15px_-5px_rgba(0,0,0,0.05)]">
             <div className="flex flex-col">
                 <span className="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Nossos</span>
                 <span className="text-xs sm:text-sm font-bold text-cigre-green uppercase tracking-wider whitespace-nowrap">Patrocinadores</span>
             </div>
-            <div className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-l from-transparent to-white/0"></div>
         </div>
         
-        {/* Container do Scroll Infinito */}
-        <div 
-            className="flex-1 overflow-hidden relative h-full flex items-center"
-            style={{
-                maskImage: 'linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent)',
-                WebkitMaskImage: 'linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent)'
-            }}
-        >
-            <div className="flex animate-marquee-infinite">
+        <div className="flex-1 overflow-hidden relative h-full flex items-center">
+            <div className="animate-marquee-infinite">
+                <MarqueeContent />
+                <MarqueeContent />
                 <MarqueeContent />
                 <MarqueeContent />
             </div>

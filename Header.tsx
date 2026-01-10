@@ -7,14 +7,14 @@ const Header: React.FC = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   // Updated link order based on user request:
-  // Sobre, Local, Programação, Patrocinadores, Comitê Organizador, Conheça o B4, Inscreva-se (Button)
+  // Sobre, Local, Programação, Patrocinadores, Conheça o B4, Comitê, Inscreva-se (Button)
   const navLinks = [
     { name: 'Sobre o Evento', href: '#sobre' },
     { name: 'Local', href: '#local' },
     { name: 'Programação', href: '#programacao' },
     { name: 'Patrocinadores', href: '#patrocinio' },
-    { name: 'Comitê Organizador', href: '#comite' },
     { name: 'Conheça o B4', href: '#conheca-comite' },
+    { name: 'Comitê', href: '#comite' },
     { name: 'Inscreva-se', href: '#inscricao' },
   ];
 

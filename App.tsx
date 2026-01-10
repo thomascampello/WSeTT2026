@@ -5,7 +5,7 @@ import Hero from './components/Hero';
 import { AboutEvent, AboutB4 } from './components/About';
 import Program from './components/Program';
 import Location from './components/Location';
-import CommitteeCarousel from './components/CommitteeCarousel';
+import CommitteeSection from './components/CommitteeCarousel';
 import Pricing from './components/Pricing';
 import Sponsors, { SponsorsList, SponsorshipCTA } from './components/Sponsors';
 import Footer from './components/Footer';
@@ -47,9 +47,9 @@ function App() {
         {/* 7. Seja um patrocinador (CTA) */}
         <SponsorshipCTA />
         
-        {/* 8. Comitê Organizador - Comentado conforme solicitado anteriormente */}
-        {/* <CommitteeCarousel /> */}
-        
+        {/* 8. Comitê Organizador - Posicionado antes do B4 conforme solicitado */}
+        <CommitteeSection />
+
         {/* 9. Conheça o B4 */}
         <AboutB4 />
         

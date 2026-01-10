@@ -19,7 +19,7 @@ const Pricing: React.FC = () => {
         
         <div className="text-center max-w-3xl mx-auto mb-16 relative">
              <div className="flex items-center justify-center gap-3 mb-2">
-                 <h2 className="text-3xl font-bold text-gray-900">Inscrição e Investimento</h2>
+                 <h2 className="text-3xl font-bold text-gray-900">Inscrição</h2>
                  <span className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
                    Vagas Limitadas
                  </span>
@@ -122,6 +122,13 @@ const Pricing: React.FC = () => {
                     <span>Almoço não incluso</span>
                 </div>
             </div>
+        </div>
+        
+        {/* Membership Link */}
+        <div className="text-center mb-12">
+            <p className="text-gray-700 text-lg">
+                Quer se associar ao CIGRE? Acesse <a href="https://eventos.sig-cigre.org.br/associado" target="_blank" rel="noopener noreferrer" className="text-cigre-green font-bold hover:underline">https://eventos.sig-cigre.org.br/associado</a>
+            </p>
         </div>
 
         {/* Cancellation Policy and Warnings */}

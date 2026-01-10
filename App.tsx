@@ -62,7 +62,7 @@ function App() {
       <Modal 
         isOpen={showWelcomeModal} 
         onClose={() => setShowWelcomeModal(false)}
-        title="Bem-vindo ao Workshop CIGRE CE B4 2026"
+        title="Bem-vindo ao Workshop e Tutorial CIGRE CE B4 2026"
       >
         <div className="text-center">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 mb-4">

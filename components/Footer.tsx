@@ -55,8 +55,6 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-bold text-cigre-green mb-4">Links Úteis</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li><a href="http://www.cigre.org.br" target="_blank" rel="noreferrer" className="hover:text-white">CIGRE Brasil Oficial</a></li>
-              <li><a href="#" className="hover:text-white">Política de Privacidade</a></li>
-              <li><a href="#" className="hover:text-white">Termos de Uso</a></li>
             </ul>
           </div>
         </div>

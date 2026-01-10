@@ -4,7 +4,7 @@ import { EVENT_DATE, EVENT_LOCATION } from '../constants';
 
 const Hero: React.FC = () => {
   // Data fixa da última atualização manual do site
-  const lastUpdated = "05/01/2026";
+  const lastUpdated = "09/01/2026";
 
   return (
     <div id="home" className="relative bg-cigre-green h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
             href="#inscricao" 
             className="px-8 py-4 bg-cigre-accent text-white font-bold rounded shadow-lg hover:bg-cyan-600 transition-all transform hover:-translate-y-1"
           >
-            Garantir Inscrição
+            Inscreva-se
           </a>
           <a 
             href="#sobre" 

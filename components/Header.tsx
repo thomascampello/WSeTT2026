@@ -7,15 +7,15 @@ const Header: React.FC = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   // Updated link order based on user request:
-  // Sobre, Local, Programação, Patrocinadores, Comitê Organizador, Conheça o B4, Inscreva-se (Button)
+  // Inscreva-se (Red Button First), Sobre, Local, Programação, Patrocinadores, Comitê Organizador, Conheça o B4
   const navLinks = [
+    { name: 'Inscreva-se', href: '#inscricao' },
     { name: 'Sobre o Evento', href: '#sobre' },
-    { name: 'Local', href: '#local' },
     { name: 'Programação', href: '#programacao' },
+    { name: 'Local', href: '#local' },
     { name: 'Patrocinadores', href: '#patrocinio' },
     { name: 'Comitê Organizador', href: '#comite' },
     { name: 'Conheça o B4', href: '#conheca-comite' },
-    { name: 'Inscreva-se', href: '#inscricao' },
   ];
 
   const scrollToSection = (id: string) => {
@@ -52,7 +52,7 @@ const Header: React.FC = () => {
                        <button
                          key={link.name}
                          onClick={() => scrollToSection(link.href)}
-                         className="px-6 py-2.5 bg-cigre-green text-white font-bold rounded-full hover:bg-emerald-800 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none text-base ml-2"
+                         className="px-6 py-2.5 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none text-base mr-2"
                        >
                          {link.name}
                        </button>
@@ -92,7 +92,7 @@ const Header: React.FC = () => {
                 onClick={() => scrollToSection(link.href)}
                 className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${
                     link.name === 'Inscreva-se' 
-                    ? 'text-cigre-green font-bold bg-green-50' 
+                    ? 'text-red-600 font-bold bg-red-50' 
                     : 'text-gray-700 hover:text-cigre-green hover:bg-cigre-light'
                 }`}
               >

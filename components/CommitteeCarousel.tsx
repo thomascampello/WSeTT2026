@@ -51,7 +51,7 @@ const CommitteeSection: React.FC = () => {
             
             {/* Título */}
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
-                Conheça o Comitê Organizador do Evento
+                Conheça o comitê organizador do evento
             </h2>
           </div>
 
@@ -84,10 +84,10 @@ const CommitteeSection: React.FC = () => {
                             </div>
                             <div className="overflow-hidden">
                                 <h4 className="font-bold text-gray-900 text-sm leading-tight truncate">{member.name}</h4>
+                                <p className="text-[10px] text-cigre-green font-bold uppercase">{member.bio}</p>
                             </div>
                         </div>
                         <div className="mt-2 w-full pt-2 border-t border-gray-200">
-                             <p className="text-xs text-gray-600 font-medium mb-1">{member.bio}</p>
                              {member.image && (
                                 <a href={`mailto:${member.image}`} className="text-xs text-cigre-accent hover:underline flex items-center gap-1">
                                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>

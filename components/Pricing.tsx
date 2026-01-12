@@ -81,45 +81,47 @@ const Pricing: React.FC = () => {
             <button 
                 type="button"
                 onClick={handleRegistration}
-                className="px-12 py-4 rounded-full font-bold text-lg bg-cigre-green text-white hover:bg-emerald-800 transition-all shadow-lg shadow-emerald-900/20 transform hover:-translate-y-1"
+                className="px-12 py-4 rounded-full font-bold text-lg bg-red-600 text-white hover:bg-red-700 transition-all shadow-lg shadow-red-900/20 transform hover:-translate-y-1"
             >
-                Inscreva-se Agora
+                Inscreva-se agora!
             </button>
         </div>
 
-        {/* Common Benefits Section */}
-        <div className="bg-white border border-gray-200 rounded-2xl py-6 px-4 md:px-8 shadow-sm mb-12 max-w-6xl mx-auto">
-            <h3 className="text-lg font-bold text-gray-900 mb-6 text-center">
-                O que está incluso na inscrição?
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
-                
-                <div className="flex items-center justify-center md:justify-start text-gray-700">
-                    <div className="bg-green-50 p-2 rounded-full mr-3 shrink-0">
-                         <img src="https://img.icons8.com/ios-filled/50/006633/certificate.png" alt="Certificado" className="w-5 h-5"/>
+        {/* Included Items Section (Moved here) */}
+        <div className="max-w-6xl mx-auto mb-16">
+            <div className="bg-white border border-gray-200 rounded-2xl py-8 px-4 md:px-8 shadow-sm">
+                <h3 className="text-lg font-bold text-gray-900 mb-8 text-center">
+                    O que está incluso na inscrição?
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-sm">
+                    
+                    <div className="flex items-center justify-center md:justify-start text-gray-700">
+                        <div className="bg-green-50 p-2 rounded-full mr-3 shrink-0">
+                                <img src="https://img.icons8.com/ios-filled/50/006633/certificate.png" alt="Certificado" className="w-5 h-5"/>
+                        </div>
+                        <span>Kit de Participação e Certificado</span>
                     </div>
-                    <span>Kit de Participação e Certificado</span>
-                </div>
 
-                <div className="flex items-center justify-center md:justify-start text-gray-700">
-                    <div className="bg-green-50 p-2 rounded-full mr-3 shrink-0">
-                        <img src="https://img.icons8.com/ios-filled/50/006633/coffee.png" alt="Coffee" className="w-5 h-5"/>
+                    <div className="flex items-center justify-center md:justify-start text-gray-700">
+                        <div className="bg-green-50 p-2 rounded-full mr-3 shrink-0">
+                            <img src="https://img.icons8.com/ios-filled/50/006633/coffee.png" alt="Coffee" className="w-5 h-5"/>
+                        </div>
+                        <span>Coffee-breaks</span>
                     </div>
-                    <span>Coffee-breaks</span>
-                </div>
 
-                <div className="flex items-center justify-center md:justify-start text-gray-700">
-                    <div className="bg-green-50 p-2 rounded-full mr-3 shrink-0">
-                        <img src="https://img.icons8.com/ios-filled/50/006633/restaurant.png" alt="Jantar" className="w-5 h-5"/>
+                    <div className="flex items-center justify-center md:justify-start text-gray-700">
+                        <div className="bg-green-50 p-2 rounded-full mr-3 shrink-0">
+                            <img src="https://img.icons8.com/ios-filled/50/006633/restaurant.png" alt="Jantar" className="w-5 h-5"/>
+                        </div>
+                        <span>Jantar de Confraternização</span>
                     </div>
-                    <span>Jantar de Confraternização</span>
-                </div>
 
-                <div className="flex items-center justify-center md:justify-start text-red-600/80 font-medium">
-                     <div className="bg-red-50 p-2 rounded-full mr-3 shrink-0">
-                        <img src="https://img.icons8.com/ios-filled/50/cc0000/no-entry.png" alt="Não incluso" className="w-5 h-5"/>
+                    <div className="flex items-center justify-center md:justify-start text-red-600/80 font-medium">
+                            <div className="bg-red-50 p-2 rounded-full mr-3 shrink-0">
+                            <img src="https://img.icons8.com/ios-filled/50/cc0000/no-entry.png" alt="Não incluso" className="w-5 h-5"/>
+                        </div>
+                        <span>Almoço não incluso</span>
                     </div>
-                    <span>Almoço não incluso</span>
                 </div>
             </div>
         </div>

@@ -31,14 +31,14 @@ function App() {
         
         {/* 2. Sobre o evento */}
         <AboutEvent />
-        
-        {/* 3. Local do evento */}
-        <Location />
-        
-        {/* 4. Programa provisório */}
+
+        {/* 3. Programação técnica */}
         <Program />
         
-        {/* 5. Inscrição */}
+        {/* 4. Local do evento (Movido para cá) */}
+        <Location />
+
+        {/* 5. Inscrição (Contém O que está incluso) */}
         <Pricing />
         
         {/* 6. Patrocinador (Lista de Logos Estática) */}
@@ -47,7 +47,7 @@ function App() {
         {/* 7. Seja um patrocinador (CTA) */}
         <SponsorshipCTA />
         
-        {/* 8. Comitê Organizador - Posicionado antes do B4 conforme solicitado */}
+        {/* 8. Comitê Organizador */}
         <CommitteeSection />
 
         {/* 9. Conheça o B4 */}
@@ -62,7 +62,7 @@ function App() {
       <Modal 
         isOpen={showWelcomeModal} 
         onClose={() => setShowWelcomeModal(false)}
-        title="Bem-vindo ao Workshop e Tutorial CIGRE CE B4 2026"
+        title="Bem-vindo ao Workshop CIGRE CE B4 2026"
       >
         <div className="text-center">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 mb-4">
@@ -89,7 +89,7 @@ function App() {
               setShowWelcomeModal(false);
               document.getElementById('inscricao')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="w-full bg-cigre-green text-white py-3 rounded-lg font-bold hover:bg-emerald-800 transition-colors"
+            className="w-full bg-red-600 text-white py-3 rounded-lg font-bold hover:bg-red-700 transition-colors"
           >
             Aproveitar Desconto Agora
           </button>

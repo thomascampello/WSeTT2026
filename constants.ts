@@ -84,7 +84,7 @@ export const EVENT_COMMITTEE: CommitteeMember[] = [
   { id: 7, name: 'Fernando Cattan Jusan', role: 'Membro', bio: 'ONS', initials: 'FJ', image: 'fernando.jusan@ons.org.br' },
   { id: 8, name: 'Paulo Edmundo Freire', role: 'Membro', bio: 'PAIOL Engenharia', initials: 'PF', image: 'paulofreire@paiolengenharia.com.br' },
   { id: 9, name: 'Paulo Cesar Vaz Esmeraldo', role: 'Membro', bio: 'Power Consult', initials: 'PE', image: 'paulo.esmeraldo@pcveeng.com.br' },
-  { id: 10, name: 'John Graham', role: 'Membro', bio: 'Graham & Graham', initials: 'JG', image: 'john1fg@gmail.com' },
+  { id: 10, name: 'John Graham', role: 'Membro', bio: 'Consultor', initials: 'JG', image: 'john1fg@gmail.com' },
 ];
 
 export const CEB4_COORDINATION: CommitteeMember[] = [

@@ -80,7 +80,7 @@ function App() {
               Inscreva-se com antecedência!
             </p>
             <p className="text-gray-600 text-sm mt-1">
-              Garanta <strong>20% de desconto</strong> realizando sua inscrição até o dia <strong>31 de Janeiro</strong>.
+              Garanta <strong>20% de desconto</strong> realizando sua inscrição até o dia <strong>15 de Fevereiro</strong>.
             </p>
           </div>
 

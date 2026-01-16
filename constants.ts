@@ -7,7 +7,7 @@ const PRICE_MEMBER = 1540.09;
 const PRICE_STUDENT = 770.09;
 const PRICE_MEMBER_STUDENT = 538.09;
 
-export const DISCOUNT_DEADLINE = '31 de Janeiro de 2026';
+export const DISCOUNT_DEADLINE = '15 de Fevereiro de 2026';
 export const DISCOUNT_PERCENTAGE = 0.20;
 
 export const CIGRE_ADDRESS = "Praia de Botafogo, 228 - Conj. 1702 - Botafogo, Rio de Janeiro - RJ, 22250-040";
@@ -130,7 +130,7 @@ export const CEB4_COORDINATION: CommitteeMember[] = [
   },
 ];
 
-export const EVENT_DATE = '17 e 18 de Março de 2026';
+export const EVENT_DATE = '24 e 25 de Março de 2026';
 export const EVENT_LOCATION = 'Edifício Argentina - Rio de Janeiro, RJ';
 
 export const MOTIVATION_TEXT = `O desenvolvimento da transmissão em HVDC (High Voltage Direct Current) no Brasil ocorre inicialmente motivado pela necessidade de escoamento de grandes blocos de energia produzida por usinas hidrelétricas distantes dos centros de carga.

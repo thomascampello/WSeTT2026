@@ -57,7 +57,7 @@ const Program: React.FC = () => {
                         : 'text-gray-500 hover:text-gray-700'
                     }`}
                 >
-                    Tutorial (17/03)
+                    Tutorial (24/03)
                 </button>
                 <button
                     onClick={() => setActiveTab('day2')}
@@ -67,7 +67,7 @@ const Program: React.FC = () => {
                         : 'text-gray-500 hover:text-gray-700'
                     }`}
                 >
-                    Workshop (18/03)
+                    Workshop (25/03)
                 </button>
             </div>
         </div>

@@ -1,36 +1,37 @@
 
-import React, { useState } from 'react';
-import { SCHEDULE_DAY_1, SCHEDULE_DAY_2 } from '../constants';
+import React from 'react';
+import { SCHEDULE_DAY_1 } from '../constants';
 import { ScheduleItem } from '../types';
 
 const Program: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'day1' | 'day2'>('day1');
-
   const day1Schedule: ScheduleItem[] = SCHEDULE_DAY_1;
 
   const renderRow = (item: ScheduleItem, index: number) => {
     let rowClass = "border-b border-gray-100 hover:bg-gray-50 transition-colors";
-    let timeClass = "font-mono text-xs sm:text-base font-semibold text-cigre-green";
-    let activityClass = "font-medium text-sm sm:text-base text-gray-900";
+    let timeClass = "font-mono text-xs font-bold text-cigre-green";
+    let activityClass = "font-medium text-xs sm:text-sm text-gray-900";
+    let speakerClass = "text-xs text-gray-600";
     
     if (item.type === 'break' || item.type === 'lunch') {
       rowClass = "bg-amber-50/60 border-b border-amber-100";
-      timeClass = "font-mono text-xs sm:text-base font-bold text-amber-700";
-      activityClass = "font-bold text-sm sm:text-base text-amber-900 flex items-center gap-2";
+      timeClass = "font-mono text-xs font-bold text-amber-700";
+      activityClass = "font-bold text-xs sm:text-sm text-amber-900";
     }
 
     return (
       <tr key={index} className={rowClass}>
-        <td className="py-4 px-3 sm:px-4 whitespace-nowrap">
+        <td className="py-3 px-2 sm:px-4 whitespace-nowrap align-top">
            <div className={timeClass}>{item.time}</div>
         </td>
-        <td className="py-4 px-3 sm:px-4">
+        <td className="py-3 px-2 sm:px-4 align-top">
            <div className={activityClass}>
              {item.activity}
            </div>
         </td>
-        <td className="py-4 px-3 sm:px-4 text-gray-700 text-sm sm:text-base font-medium">
-           {item.speaker}
+        <td className="py-3 px-2 sm:px-4 align-top">
+           <div className={speakerClass}>
+             {item.speaker}
+           </div>
         </td>
       </tr>
     );
@@ -38,7 +39,7 @@ const Program: React.FC = () => {
 
   return (
     <section id="programacao" className="py-20 bg-white scroll-mt-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Programação Técnica</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
@@ -46,42 +47,20 @@ const Program: React.FC = () => {
           </p>
         </div>
         
-        {/* Tabs */}
-        <div className="flex justify-center mb-8">
-            <div className="bg-gray-100 p-1 rounded-xl inline-flex shadow-inner">
-                <button
-                    onClick={() => setActiveTab('day1')}
-                    className={`px-4 sm:px-8 py-3 rounded-lg text-xs sm:text-sm font-bold transition-all duration-300 ${
-                        activeTab === 'day1' 
-                        ? 'bg-white text-cigre-green shadow-md transform scale-105' 
-                        : 'text-gray-500 hover:text-gray-700'
-                    }`}
-                >
-                    Tutorial (24/03)
-                </button>
-                <button
-                    onClick={() => setActiveTab('day2')}
-                    className={`px-4 sm:px-8 py-3 rounded-lg text-xs sm:text-sm font-bold transition-all duration-300 ${
-                        activeTab === 'day2' 
-                        ? 'bg-white text-cigre-green shadow-md transform scale-105' 
-                        : 'text-gray-500 hover:text-gray-700'
-                    }`}
-                >
-                    Workshop (25/03)
-                </button>
-            </div>
-        </div>
-
-        {/* Content Area */}
-        {activeTab === 'day1' ? (
-            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden animate-fade-in">
-                <div className="overflow-x-auto">
-                    <table className="w-full text-left border-collapse min-w-[600px] sm:min-w-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* DAY 1 - Table View */}
+            <div className="flex flex-col h-full rounded-2xl shadow-lg border border-gray-200 overflow-hidden bg-white">
+                <div className="bg-gray-700 text-white p-6 text-center">
+                    <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wide">Terça-feira | 24.03.2026</h3>
+                    <p className="text-gray-300 mt-1 font-medium">Tutorial</p>
+                </div>
+                <div className="overflow-x-auto flex-1">
+                     <table className="w-full text-left border-collapse">
                         <thead>
-                            <tr className="bg-cigre-green text-white">
-                                <th className="py-4 px-3 sm:px-4 font-bold text-xs uppercase tracking-wider w-32 sm:w-40">Horário</th>
-                                <th className="py-4 px-3 sm:px-4 font-bold text-xs uppercase tracking-wider">Atividade</th>
-                                <th className="py-4 px-3 sm:px-4 font-bold text-xs uppercase tracking-wider w-1/4 sm:w-1/3">Palestrante / Responsável</th>
+                            <tr className="bg-gray-50 border-b border-gray-200 text-gray-500">
+                                <th className="py-3 px-2 sm:px-4 font-bold text-[10px] uppercase tracking-wider w-24">Horário</th>
+                                <th className="py-3 px-2 sm:px-4 font-bold text-[10px] uppercase tracking-wider">Atividade</th>
+                                <th className="py-3 px-2 sm:px-4 font-bold text-[10px] uppercase tracking-wider w-1/3">Palestrante</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-100">
@@ -89,80 +68,70 @@ const Program: React.FC = () => {
                         </tbody>
                     </table>
                 </div>
-                <div className="p-4 bg-gray-50 border-t border-gray-100 text-center text-xs text-gray-500 italic">
-                    * Programação preliminar, sujeita a alterações sem aviso prévio. Utilize o scroll lateral se necessário em dispositivos pequenos.
+                <div className="p-3 bg-gray-50 border-t border-gray-100 text-center text-[10px] text-gray-400">
+                    * Programação sujeita a alterações.
                 </div>
             </div>
-        ) : (
-            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 md:p-12 text-center animate-fade-in relative overflow-hidden">
-                 <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-cigre-green/5 rounded-full blur-3xl"></div>
-                 <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-cigre-accent/5 rounded-full blur-3xl"></div>
-                 
-                 <div className="relative z-10 max-w-4xl mx-auto">
-                    <div className="inline-flex items-center justify-center p-4 bg-cigre-green/10 text-cigre-green rounded-full mb-6 ring-4 ring-cigre-green/5">
-                        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
+
+            {/* DAY 2 - Creative View (No Times) */}
+            <div className="flex flex-col h-full rounded-2xl shadow-lg border border-gray-200 overflow-hidden bg-white">
+                <div className="bg-gray-700 text-white p-6 text-center">
+                     <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wide">Quarta-feira | 25.03.2026</h3>
+                     <p className="text-gray-300 mt-1 font-medium">Workshop</p>
+                </div>
+                
+                <div className="flex-1 bg-white p-6 lg:p-8 flex flex-col gap-6">
                     
-                    <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                        Workshop
-                    </h3>
-                    
-                    <p className="text-lg text-gray-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-                        O segundo dia será palco de apresentações que conectarão a teoria à prática, trazendo o que há de mais moderno no setor elétrico mundial.
-                    </p>
-                    
-                    <div className="grid md:grid-cols-2 gap-6 text-left mb-12">
-                        {/* Card Hitachi Energy & GE Vernova */}
-                        <div className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border border-gray-100 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
-                            <div className="flex items-start gap-4">
-                                <div className="bg-yellow-100 p-3 rounded-xl text-yellow-700 mt-1 shadow-sm group-hover:bg-yellow-400 group-hover:text-white transition-colors">
-                                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 className="font-bold text-gray-900 text-xl mb-2">Destaque Hitachi Energy & GE Vernova</h4>
-                                    <p className="text-gray-600 text-sm leading-relaxed">
-                                        Palestras exclusivas confirmadas de nossas patrocinadoras Ouro, onde especialistas apresentarão inovações críticas e o futuro das tecnologias HVDC e FACTS.
-                                    </p>
+                    {/* Highlighted Lectures */}
+                    <div className="space-y-6 mt-4">
+                        <div className="border-l-4 border-cigre-green pl-5 py-2">
+                            <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Palestras Confirmadas</h4>
+                            
+                            {/* Lecture 1 */}
+                            <div className="mb-8 group">
+                                <h5 className="font-bold text-lg text-gray-900 group-hover:text-cigre-green transition-colors leading-tight">
+                                    Elos de Transmissão HVDC VSC com linhas aéreas
+                                </h5>
+                                <div className="flex flex-wrap items-center gap-3 mt-2">
+                                    <span className="text-gray-600 text-sm font-medium">Paulo Fischer de Toledo (Hitachi Energy)</span>
                                 </div>
                             </div>
-                        </div>
 
-                        {/* Card Outros Patrocinadores */}
-                        <div className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border border-gray-100 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
-                             <div className="flex items-start gap-4">
-                                <div className="bg-cigre-accent/10 p-3 rounded-xl text-cigre-accent mt-1 shadow-sm group-hover:bg-cigre-accent group-hover:text-white transition-colors">
-                                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 className="font-bold text-gray-900 text-xl mb-2">Grandes Players do Setor</h4>
-                                    <p className="text-gray-600 text-sm leading-relaxed">
-                                        Empresas líderes compartilharão cases reais, desafios superados e as tendências que estão transformando o mercado de energia através da eletrônica de potência.
-                                    </p>
+                            {/* Lecture 2 */}
+                            <div className="group">
+                                <h5 className="font-bold text-lg text-gray-900 group-hover:text-cigre-green transition-colors leading-tight">
+                                    STATCOM - Aplicações e tendências mundiais
+                                </h5>
+                                <div className="flex flex-wrap items-center gap-3 mt-2">
+                                    <span className="text-gray-600 text-sm font-medium">Bruno Gallucci (Hitachi Energy)</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="inline-block bg-cigre-green/5 border border-cigre-green/20 rounded-full px-8 py-3">
-                         <div className="flex items-center gap-2">
-                             <span className="relative flex h-3 w-3">
-                               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cigre-green opacity-75"></span>
-                               <span className="relative inline-flex rounded-full h-3 w-3 bg-cigre-green"></span>
-                             </span>
-                             <span className="text-cigre-green font-bold text-sm tracking-wide">
-                                Mais informações e programação detalhada em breve.
-                             </span>
-                         </div>
+                    <div className="h-px bg-gray-100 w-full my-2"></div>
+
+                    {/* GE Section */}
+                    <div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 text-white shadow-xl p-6 transform transition hover:scale-[1.02] duration-300">
+                        {/* Decorative Background Elements */}
+                        <div className="absolute top-0 right-0 -mr-10 -mt-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
+                        <div className="absolute bottom-0 left-0 -ml-10 -mb-10 w-40 h-40 bg-cigre-green/20 rounded-full blur-3xl"></div>
+                        
+                        <div className="relative z-10 flex flex-col items-center text-center">
+                            
+                            <h4 className="font-bold text-lg mb-2 mt-2">Sessões Técnicas</h4>
+                            <p className="text-gray-300 text-sm leading-relaxed mb-5 max-w-sm">
+                                Mais palestras a serem confirmadas em breve, inclusive duas apresentações técnicas ministradas por especialistas da GE Vernova.
+                            </p>
+                        </div>
                     </div>
-                 </div>
+
+                </div>
+                <div className="p-3 bg-gray-50 border-t border-gray-100 text-center text-[10px] text-gray-400">
+                    * Temas adicionais serão anunciados em breve.
+                </div>
             </div>
-        )}
+        </div>
       </div>
     </section>
   );

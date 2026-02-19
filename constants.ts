@@ -183,4 +183,12 @@ export const SCHEDULE_DAY_1: ScheduleItem[] = [
   { time: '19:00', activity: 'Jantar de Confraternização (Local a confirmar)', speaker: '-', type: 'lunch' },
 ];
 
-export const SCHEDULE_DAY_2: ScheduleItem[] = [];
+export const SCHEDULE_DAY_2: ScheduleItem[] = [
+  { time: '09:00 - 10:30', activity: 'Elos de Transmissão HVDC VSC com linhas aéreas', speaker: 'Paulo Fischer de Toledo', type: 'session' },
+  { time: '10:30 - 11:00', activity: 'Coffee-break', speaker: '-', type: 'break' },
+  { time: '11:00 - 12:30', activity: 'Palestra Técnica (Tema a definir)', speaker: 'Especialista GE Vernova', type: 'session' },
+  { time: '12:30 - 14:00', activity: 'Almoço', speaker: '-', type: 'lunch' },
+  { time: '14:00 - 14:40', activity: 'STATCOM - Aplicações e tendências mundiais', speaker: 'Bruno Gallucci', type: 'session' },
+  { time: '14:40 - 15:20', activity: 'Palestra Técnica (Tema a definir)', speaker: 'Especialista GE Vernova', type: 'session' },
+  { time: '15:20 - 16:00', activity: 'Coffee-break e Encerramento', speaker: '-', type: 'break' },
+];

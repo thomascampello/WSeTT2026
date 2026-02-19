@@ -3,7 +3,7 @@ import React from 'react';
 import { PRICING_TIERS, DISCOUNT_DEADLINE, calculateDiscountedPrice, CANCELLATION_POLICY, REGISTRATION_URL } from '../constants';
 
 const Pricing: React.FC = () => {
-  const isDiscountActive = true; 
+  const isDiscountActive = false; 
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
@@ -58,15 +58,15 @@ const Pricing: React.FC = () => {
                     )}
                     
                     <div className="mt-2 flex flex-col items-center justify-center">
-                        {/* Valor Cheio Grande e Riscado */}
+                        {/* Valor Cheio Grande e Riscado (apenas se desconto ativo) */}
                         {isDiscountActive && (
                             <span className="block text-2xl lg:text-3xl font-extrabold text-gray-600 line-through opacity-80">
                                 {formatCurrency(tier.basePrice)}
                             </span>
                         )}
                         
-                        {/* Valor Promocional Menor e Preto */}
-                        <span className="block text-lg lg:text-xl font-bold text-gray-900 mt-1">
+                        {/* Valor Final (Normal ou Promocional) - Fonte Aumentada */}
+                        <span className="block text-2xl lg:text-3xl font-extrabold text-gray-900 mt-1">
                             {formatCurrency(finalPrice)}
                         </span>
                     </div>
@@ -138,7 +138,6 @@ const Pricing: React.FC = () => {
             {/* Warning Box */}
             <div className="mb-6 p-3 bg-blue-50 border-l-4 border-blue-400 text-blue-800 text-xs sm:text-sm space-y-2">
                 <p><strong>Atenção:</strong> As vagas para Estudantes e Sócios Estudante são limitadas a 10% das vagas totais.</p>
-                <p><strong>Observação importante:</strong> Os valores promocionais indicados acima (-20%) só serão válidos para inscrições efetivadas e pagas dentro da data estipulada da promoção ({DISCOUNT_DEADLINE}).</p>
             </div>
 
             <h4 className="font-bold text-gray-800 mb-4 flex items-center gap-2">

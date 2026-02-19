@@ -4,7 +4,7 @@ import { EVENT_DATE, EVENT_LOCATION } from '../constants';
 
 const Hero: React.FC = () => {
   // Data fixa da última atualização manual do site
-  const lastUpdated = "16/01/2026";
+  const lastUpdated = "19/02/2026";
 
   return (
     <div id="home" className="relative bg-cigre-green h-screen min-h-[600px] flex items-center justify-center overflow-hidden">

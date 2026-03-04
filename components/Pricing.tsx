@@ -21,7 +21,7 @@ const Pricing: React.FC = () => {
              <div className="flex items-center justify-center gap-3 mb-2">
                  <h2 className="text-3xl font-bold text-gray-900">Inscrição</h2>
                  <span className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
-                   Vagas Limitadas
+                   Últimas Vagas!
                  </span>
              </div>
         </div>

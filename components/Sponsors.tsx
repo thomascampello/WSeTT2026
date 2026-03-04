@@ -7,13 +7,13 @@ import { SPONSORSHIP_DATA } from '../constants';
 
 export const SponsorsList: React.FC = () => {
     const goldSponsors = [
-        { id: 1, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' },
-        { id: 2, src: '/Imgs/GE_Vernova_Standard_RGB_Evergreen.ai.png', alt: 'GE Vernova' }
+        { id: 1, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy', sizeClass: 'max-h-24' },
+        { id: 2, src: '/Imgs/GE_Vernova_Standard_RGB_Evergreen.ai.png', alt: 'GE Vernova', sizeClass: 'max-h-40' }
     ]; 
 
     const silverSponsors = [
-        { id: 1, src: '/Imgs/logo-TEEE-png.png', alt: 'TEEE' },
-        { id: 2, src: '/Imgs/Logo_Nari-jpg.jpg', alt: 'NARI' }
+        { id: 1, src: '/Imgs/logo-TEEE-png.png', alt: 'TEEE', sizeClass: 'max-h-20' },
+        { id: 2, src: '/Imgs/Logo_Nari-jpg.jpg', alt: 'NARI', sizeClass: 'max-h-20' }
     ];
 
     return (
@@ -43,7 +43,7 @@ export const SponsorsList: React.FC = () => {
                                     <img 
                                         src={sponsor.src} 
                                         alt={sponsor.alt} 
-                                        className="h-auto w-auto max-h-32 max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
+                                        className={`h-auto w-auto ${sponsor.sizeClass || 'max-h-32'} max-w-full object-contain group-hover:scale-105 transition-transform duration-500`}
                                     />
                                 </div>
                             </div>
@@ -66,7 +66,7 @@ export const SponsorsList: React.FC = () => {
                                     <img 
                                         src={sponsor.src} 
                                         alt={sponsor.alt} 
-                                        className="h-20 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                                        className="h-auto w-auto max-h-32 max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
                                     />
                                 </div>
                             </div>
@@ -176,7 +176,7 @@ interface SponsorGroup {
     id: string;
     label: string;
     badgeColor: string;
-    logos: { id: number; src: string; alt: string }[];
+    logos: { id: number; src: string; alt: string; className?: string }[];
     imgClass: string;
 }
 
@@ -186,8 +186,8 @@ const GROUPS: SponsorGroup[] = [
       label: 'Patrocínio Ouro',
       badgeColor: 'bg-yellow-100 text-yellow-800 border-yellow-200',
       logos: [
-        { id: 1, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' },
-        { id: 2, src: '/Imgs/GE_Vernova_Standard_RGB_Evergreen.ai.png', alt: 'GE Vernova' }
+        { id: 1, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy', className: 'h-[70%] w-auto' },
+        { id: 2, src: '/Imgs/GE_Vernova_Standard_RGB_Evergreen.ai.png', alt: 'GE Vernova', className: 'h-[120%] w-auto' }
       ],
       imgClass: 'h-full w-auto' 
     },
@@ -213,7 +213,7 @@ const MarqueeContent: React.FC = () => (
           <div className="flex items-center gap-8">
             {group.logos.map((logo, idx) => (
                <div key={`${group.id}-${logo.id}-${idx}`} className="flex items-center justify-center shrink-0 h-10 md:h-12 w-auto">
-                   <img src={logo.src} alt={logo.alt} className={`object-contain ${group.imgClass}`} />
+                   <img src={logo.src} alt={logo.alt} className={`object-contain ${logo.className || group.imgClass}`} />
                </div>
             ))}
           </div>

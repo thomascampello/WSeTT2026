@@ -180,7 +180,7 @@ export const SCHEDULE_DAY_1: ScheduleItem[] = [
   { time: '15:30 - 16:00', activity: 'Coffe-Break', speaker: '-', type: 'break' },
   { time: '16:00 - 17:00', activity: 'Desafios considerando a integração de fontes renováveis (Wind Power Onshore / PV) no SIN', speaker: 'Paulo Eduardo Martins Quintão (ONS)', type: 'session' },
   { time: '17:00 - 18:00', activity: 'Mesa redonda: Tópicos Relevantes sobre VSC e IBR', speaker: 'Todos palestrantes do 1º dia', type: 'session' },
-  { time: '19:00', activity: 'Jantar de Confraternização (Local a confirmar)', speaker: '-', type: 'lunch' },
+  { time: '19:00', activity: 'Jantar de Confraternização (Fogo de Chão - Botafogo)', speaker: '-', type: 'lunch' },
 ];
 
 export const SCHEDULE_DAY_2: ScheduleItem[] = [

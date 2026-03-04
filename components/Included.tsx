@@ -29,7 +29,7 @@ const Included: React.FC = () => {
                             <div className="bg-green-50 p-2 rounded-full mr-3 shrink-0">
                                 <img src="https://img.icons8.com/ios-filled/50/006633/restaurant.png" alt="Jantar" className="w-5 h-5"/>
                             </div>
-                            <span>Jantar de Confraternização</span>
+                            <span>Jantar de Confraternização (Fogo de Chão - Botafogo)</span>
                         </div>
 
                         <div className="flex items-center justify-center md:justify-start text-red-600/80 font-medium">

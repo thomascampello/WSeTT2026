@@ -98,12 +98,22 @@ const Program: React.FC = () => {
                             </div>
 
                             {/* Lecture 2 */}
-                            <div className="group">
+                            <div className="mb-8 group">
                                 <h5 className="font-bold text-lg text-gray-900 group-hover:text-cigre-green transition-colors leading-tight">
                                     STATCOM - Aplicações e tendências mundiais
                                 </h5>
                                 <div className="flex flex-wrap items-center gap-3 mt-2">
                                     <span className="text-gray-600 text-sm font-medium">Bruno Gallucci (Hitachi Energy)</span>
+                                </div>
+                            </div>
+
+                            {/* Lecture 3 */}
+                            <div className="group">
+                                <h5 className="font-bold text-lg text-gray-900 group-hover:text-cigre-green transition-colors leading-tight">
+                                    Reatores para sistemas FACTS e HVDC-VSC
+                                </h5>
+                                <div className="flex flex-wrap items-center gap-3 mt-2">
+                                    <span className="text-gray-600 text-sm font-medium">Leonardo do Nascimento Pereira (TEEE)</span>
                                 </div>
                             </div>
                         </div>

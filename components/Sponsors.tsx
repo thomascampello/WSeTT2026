@@ -11,6 +11,11 @@ export const SponsorsList: React.FC = () => {
         { id: 2, src: '/Imgs/GE_Vernova_Standard_RGB_Evergreen.ai.png', alt: 'GE Vernova' }
     ]; 
 
+    const silverSponsors = [
+        { id: 1, src: '/Imgs/teee_logo.png', alt: 'TEEE' },
+        { id: 2, src: '/Imgs/nari_logo.png', alt: 'NARI' }
+    ];
+
     return (
         <section id="patrocinio" className="py-24 bg-gray-50 scroll-mt-24 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none opacity-30">
@@ -39,6 +44,29 @@ export const SponsorsList: React.FC = () => {
                                         src={sponsor.src} 
                                         alt={sponsor.alt} 
                                         className="h-auto w-auto max-h-32 max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="mb-20">
+                    <div className="flex items-center justify-center gap-4 mb-10">
+                        <div className="h-[2px] w-16 bg-gray-300"></div>
+                        <h3 className="text-2xl font-bold text-gray-500 uppercase tracking-[0.25em]">
+                            Patrocínio Prata
+                        </h3>
+                        <div className="h-[2px] w-16 bg-gray-300"></div>
+                    </div>
+                    <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+                        {silverSponsors.map((sponsor) => (
+                            <div key={`silver-${sponsor.id}`} className="group relative w-full max-w-md">
+                                <div className="bg-white rounded-2xl p-10 flex items-center justify-center h-48 w-full shadow-lg hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-2 border-2 border-gray-200">
+                                    <img 
+                                        src={sponsor.src} 
+                                        alt={sponsor.alt} 
+                                        className="h-auto w-auto max-h-24 max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
                                     />
                                 </div>
                             </div>
@@ -160,6 +188,16 @@ const GROUPS: SponsorGroup[] = [
       logos: [
         { id: 1, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' },
         { id: 2, src: '/Imgs/GE_Vernova_Standard_RGB_Evergreen.ai.png', alt: 'GE Vernova' }
+      ],
+      imgClass: '' 
+    },
+    {
+      id: 'silver',
+      label: 'Patrocínio Prata',
+      badgeColor: 'bg-gray-100 text-gray-600 border-gray-200',
+      logos: [
+        { id: 1, src: '/Imgs/teee_logo.png', alt: 'TEEE' },
+        { id: 2, src: '/Imgs/nari_logo.png', alt: 'NARI' }
       ],
       imgClass: '' 
     }

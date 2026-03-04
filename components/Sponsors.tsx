@@ -66,7 +66,7 @@ export const SponsorsList: React.FC = () => {
                                     <img 
                                         src={sponsor.src} 
                                         alt={sponsor.alt} 
-                                        className="h-24 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                                        className="h-20 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
                                     />
                                 </div>
                             </div>
@@ -199,12 +199,12 @@ const GROUPS: SponsorGroup[] = [
         { id: 1, src: '/Imgs/logo-TEEE-png.png', alt: 'TEEE' },
         { id: 2, src: '/Imgs/Logo_Nari-jpg.jpg', alt: 'NARI' }
       ],
-      imgClass: 'h-[90%] w-auto' 
+      imgClass: 'h-[80%] w-auto' 
     }
 ];
 
 const MarqueeContent: React.FC = () => (
-    <div className="flex items-center gap-12 px-6">
+    <div className="flex items-center gap-12 px-6 shrink-0">
       {GROUPS.map((group) => (
         <div key={group.id} className="flex items-center gap-6 shrink-0">
           <span className={`px-3 py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border whitespace-nowrap shadow-sm ${group.badgeColor}`}>

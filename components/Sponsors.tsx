@@ -12,8 +12,8 @@ export const SponsorsList: React.FC = () => {
     ]; 
 
     const silverSponsors = [
-        { id: 1, src: '/Imgs/teee_logo.png', alt: 'TEEE' },
-        { id: 2, src: '/Imgs/NOME_DO_ARQUIVO.png', alt: 'NARI' }
+        { id: 1, src: '/Imgs/logo-TEEE-png.png', alt: 'TEEE' },
+        { id: 2, src: '/Imgs/Logo_Nari-jpg.jpg', alt: 'NARI' }
     ];
 
     return (
@@ -66,7 +66,7 @@ export const SponsorsList: React.FC = () => {
                                     <img 
                                         src={sponsor.src} 
                                         alt={sponsor.alt} 
-                                        className="h-auto w-auto max-h-24 max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
+                                        className="h-24 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
                                     />
                                 </div>
                             </div>
@@ -189,7 +189,7 @@ const GROUPS: SponsorGroup[] = [
         { id: 1, src: '/Imgs/Hitachi_Global_Logo_Black_PANTONE.png', alt: 'Hitachi Energy' },
         { id: 2, src: '/Imgs/GE_Vernova_Standard_RGB_Evergreen.ai.png', alt: 'GE Vernova' }
       ],
-      imgClass: '' 
+      imgClass: 'h-full w-auto' 
     },
     {
       id: 'silver',
@@ -199,7 +199,7 @@ const GROUPS: SponsorGroup[] = [
         { id: 1, src: '/Imgs/logo-TEEE-png.png', alt: 'TEEE' },
         { id: 2, src: '/Imgs/Logo_Nari-jpg.jpg', alt: 'NARI' }
       ],
-      imgClass: '' 
+      imgClass: 'h-[90%] w-auto' 
     }
 ];
 
@@ -212,8 +212,8 @@ const MarqueeContent: React.FC = () => (
           </span>
           <div className="flex items-center gap-8">
             {group.logos.map((logo, idx) => (
-               <div key={`${group.id}-${logo.id}-${idx}`} className="flex items-center justify-center shrink-0 w-24 h-10 md:w-32 md:h-12">
-                   <img src={logo.src} alt={logo.alt} className="max-w-full max-h-full object-contain" />
+               <div key={`${group.id}-${logo.id}-${idx}`} className="flex items-center justify-center shrink-0 h-10 md:h-12 w-auto">
+                   <img src={logo.src} alt={logo.alt} className={`object-contain ${group.imgClass}`} />
                </div>
             ))}
           </div>

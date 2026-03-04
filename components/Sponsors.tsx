@@ -13,7 +13,7 @@ export const SponsorsList: React.FC = () => {
 
     const silverSponsors = [
         { id: 1, src: '/Imgs/teee_logo.png', alt: 'TEEE' },
-        { id: 2, src: '/Imgs/nari_logo.png', alt: 'NARI' }
+        { id: 2, src: '/Imgs/NOME_DO_ARQUIVO.png', alt: 'NARI' }
     ];
 
     return (
@@ -196,8 +196,8 @@ const GROUPS: SponsorGroup[] = [
       label: 'Patrocínio Prata',
       badgeColor: 'bg-gray-100 text-gray-600 border-gray-200',
       logos: [
-        { id: 1, src: '/Imgs/teee_logo.png', alt: 'TEEE' },
-        { id: 2, src: '/Imgs/nari_logo.png', alt: 'NARI' }
+        { id: 1, src: '/Imgs/logo-TEEE-png.png', alt: 'TEEE' },
+        { id: 2, src: '/Imgs/Logo_Nari-jpg.jpg', alt: 'NARI' }
       ],
       imgClass: '' 
     }

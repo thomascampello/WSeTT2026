@@ -131,7 +131,7 @@ const Program: React.FC = () => {
                             
                             <h4 className="font-bold text-lg mb-2 mt-2">Sessões Técnicas</h4>
                             <p className="text-gray-300 text-sm leading-relaxed mb-5 max-w-sm">
-                                Mais palestras a serem confirmadas em breve, inclusive duas apresentações técnicas ministradas por especialistas da GE Vernova.
+                                Mais palestras a serem confirmadas em breve, inclusive  apresentações técnicas ministradas por especialistas da GE Vernova e da NARI.
                             </p>
                         </div>
                     </div>

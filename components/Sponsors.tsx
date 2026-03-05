@@ -66,7 +66,7 @@ export const SponsorsList: React.FC = () => {
                                     <img 
                                         src={sponsor.src} 
                                         alt={sponsor.alt} 
-                                        className="h-auto w-auto max-h-32 max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
+                                        className={`h-auto w-auto ${sponsor.sizeClass || 'max-h-25'} max-w-full object-contain group-hover:scale-105 transition-transform duration-500`}
                                     />
                                 </div>
                             </div>

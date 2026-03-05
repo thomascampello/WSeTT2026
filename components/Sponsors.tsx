@@ -12,8 +12,8 @@ export const SponsorsList: React.FC = () => {
     ]; 
 
     const silverSponsors = [
-        { id: 1, src: '/Imgs/logo-TEEE-png.png', alt: 'TEEE', sizeClass: 'max-h-20' },
-        { id: 2, src: '/Imgs/Logo_Nari-jpg.jpg', alt: 'NARI', sizeClass: 'max-h-20' }
+        { id: 1, src: '/Imgs/logo-TEEE-png.png', alt: 'TEEE', sizeClass: 'max-h-14' },
+        { id: 2, src: '/Imgs/Logo_Nari-jpg.jpg', alt: 'NARI', sizeClass: 'max-h-22' }
     ];
 
     return (

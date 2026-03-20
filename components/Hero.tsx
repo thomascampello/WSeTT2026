@@ -4,7 +4,7 @@ import { EVENT_DATE, EVENT_LOCATION } from '../constants';
 
 const Hero: React.FC = () => {
   // Data fixa da última atualização manual do site
-  const lastUpdated = "04/03/2026";
+  const lastUpdated = "20/03/2026";
 
   return (
     <div id="home" className="relative bg-cigre-green h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
@@ -58,12 +58,12 @@ const Hero: React.FC = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="#inscricao" 
-            className="px-8 py-4 bg-cigre-accent text-white font-bold rounded shadow-lg hover:bg-cyan-600 transition-all transform hover:-translate-y-1"
+          <button 
+            disabled
+            className="px-8 py-4 bg-gray-500 text-white font-bold rounded cursor-not-allowed opacity-80"
           >
-            Inscreva-se
-          </a>
+            Inscrições Encerradas
+          </button>
           <a 
             href="#sobre" 
             className="px-8 py-4 bg-white/10 backdrop-blur-md border-2 border-white text-white font-bold rounded hover:bg-white hover:text-cigre-green transition-all"

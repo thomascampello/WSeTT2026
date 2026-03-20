@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   // Updated link order based on user request:
   // Inscreva-se (Red Button First), Sobre, Local, Programação, Patrocinadores, Comitê Organizador, Conheça o B4
   const navLinks = [
-    { name: 'Inscreva-se', href: '#inscricao' },
+    { name: 'Inscrições Encerradas', href: '#inscricao' },
     { name: 'Sobre o Evento', href: '#sobre' },
     { name: 'Programação', href: '#programacao' },
     { name: 'Local', href: '#local' },
@@ -47,12 +47,12 @@ const Header: React.FC = () => {
           {/* Desktop Menu */}
           <div className="hidden xl:flex items-center space-x-6">
             {navLinks.map((link) => {
-               if (link.name === 'Inscreva-se') {
+               if (link.name === 'Inscrições Encerradas') {
                    return (
                        <button
                          key={link.name}
-                         onClick={() => scrollToSection(link.href)}
-                         className="px-6 py-2.5 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus:outline-none text-base mr-2"
+                         disabled
+                         className="px-6 py-2.5 bg-gray-400 text-white font-bold rounded-full cursor-not-allowed focus:outline-none text-base mr-2"
                        >
                          {link.name}
                        </button>
@@ -89,10 +89,11 @@ const Header: React.FC = () => {
             {navLinks.map((link) => (
               <button
                 key={link.name}
+                disabled={link.name === 'Inscrições Encerradas'}
                 onClick={() => scrollToSection(link.href)}
                 className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${
-                    link.name === 'Inscreva-se' 
-                    ? 'text-red-600 font-bold bg-red-50' 
+                    link.name === 'Inscrições Encerradas' 
+                    ? 'text-gray-500 font-bold bg-gray-100 cursor-not-allowed' 
                     : 'text-gray-700 hover:text-cigre-green hover:bg-cigre-light'
                 }`}
               >

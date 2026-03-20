@@ -184,11 +184,14 @@ export const SCHEDULE_DAY_1: ScheduleItem[] = [
 ];
 
 export const SCHEDULE_DAY_2: ScheduleItem[] = [
-  { time: '09:00 - 10:30', activity: 'Elos de Transmissão HVDC VSC com linhas aéreas', speaker: 'Paulo Fischer de Toledo', type: 'session' },
-  { time: '10:30 - 11:00', activity: 'Coffee-break', speaker: '-', type: 'break' },
-  { time: '11:00 - 12:30', activity: 'Palestra Técnica (Tema a definir)', speaker: 'Especialista GE Vernova', type: 'session' },
-  { time: '12:30 - 14:00', activity: 'Almoço', speaker: '-', type: 'lunch' },
-  { time: '14:00 - 14:40', activity: 'STATCOM - Aplicações e tendências mundiais', speaker: 'Bruno Gallucci', type: 'session' },
-  { time: '14:40 - 15:20', activity: 'Palestra Técnica (Tema a definir)', speaker: 'Especialista GE Vernova', type: 'session' },
-  { time: '15:20 - 16:00', activity: 'Coffee-break e Encerramento', speaker: '-', type: 'break' },
+  { time: '08:50 - 09:30', activity: 'Grid-Forming Technology-based Power Electronics Products and Engineering Applications', speaker: 'Dr. Yuefeng Yang (China Power NARI PURUI)', type: 'session' },
+  { time: '09:30 - 10:10', activity: 'Soluções de Eletrônica de Potência de Nova Geração: Mitigando o Déficit de Inércia e Curto-circuito mediante STATCOMs', speaker: 'Alexander Avila (GE Vernova)', type: 'session' },
+  { time: '10:10 - 10:40', activity: 'Coffee-Break', speaker: '-', type: 'break' },
+  { time: '10:40 - 12:10', activity: 'Elos de Transmissão HVDC VSC com linhas aéreas', speaker: 'Paulo Fischer de Toledo (Hitachi Energy)', type: 'session' },
+  { time: '12:10 - 13:40', activity: 'Almoço', speaker: '-', type: 'lunch' },
+  { time: '13:40 - 15:10', activity: 'Leveraging HVDC Reference Solutions to Increase Project Affordability and Decrease Risk - With a Focus on GE Vernova\'s VSC Technology', speaker: 'Phil Jones (GE Vernova)', type: 'session' },
+  { time: '15:10 - 15:50', activity: 'Reatores para sistemas FACTS e HVDC-VSC', speaker: 'Leonardo do Nascimento Pereira (TEEE)', type: 'session' },
+  { time: '15:50 - 16:20', activity: 'Coffee-Break', speaker: '-', type: 'break' },
+  { time: '16:20 - 17:00', activity: 'STATCOM - Aplicações e tendências mundiais', speaker: 'Bruno Gallucci (Hitachi Energy)', type: 'session' },
+  { time: '17:00 - 18:00', activity: 'Mesa-redonda com palestrantes e encerramento', speaker: '-', type: 'session' },
 ];

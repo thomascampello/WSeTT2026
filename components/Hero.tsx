@@ -28,16 +28,6 @@ const Hero: React.FC = () => {
 
       <div className="relative z-20 text-center px-4 max-w-5xl mx-auto drop-shadow-2xl">
         
-        {/* Aviso de Vagas Limitadas */}
-        <div className="mb-8 flex justify-center">
-            <div className="animate-pulse bg-red-600 text-white px-6 py-2 rounded-full shadow-[0_0_20px_rgba(220,38,38,0.6)] flex items-center gap-2 border border-red-400/50">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-                <span className="font-bold tracking-wide uppercase text-sm">Últimas Vagas</span>
-            </div>
-        </div>
-
         <div className="inline-block px-4 py-1 mb-6 border border-white/40 rounded-full bg-black/20 backdrop-blur-md">
           <span className="text-white text-sm font-medium tracking-widest uppercase">Workshop e Tutorial</span>
         </div>

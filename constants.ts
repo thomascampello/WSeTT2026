@@ -193,5 +193,5 @@ export const SCHEDULE_DAY_2: ScheduleItem[] = [
   { time: '15:10 - 15:50', activity: 'Reatores para sistemas FACTS e HVDC-VSC', speaker: 'Leonardo do Nascimento Pereira (TEEE)', type: 'session' },
   { time: '15:50 - 16:20', activity: 'Coffee-Break', speaker: '-', type: 'break' },
   { time: '16:20 - 17:00', activity: 'STATCOM - Aplicações e tendências mundiais', speaker: 'Bruno Gallucci (Hitachi Energy)', type: 'session' },
-  { time: '17:00 - 18:00', activity: 'Mesa-redonda com palestrantes e encerramento', speaker: '-', type: 'session' },
+  { time: '17:00 - 18:00', activity: 'Mesa-redonda com palestrantes e encerramento', speaker: 'Todos palestrantes do 2º dia', type: 'session' },
 ];

@@ -12,6 +12,7 @@ const Header: React.FC = () => {
     { name: 'Inscrições Encerradas', href: '#inscricao' },
     { name: 'Sobre o Evento', href: '#sobre' },
     { name: 'Programação', href: '#programacao' },
+    { name: 'Fotos', href: '#fotos' },
     { name: 'Local', href: '#local' },
     { name: 'Patrocinadores', href: '#patrocinio' },
     { name: 'Comitê Organizador', href: '#comite' },

@@ -9,6 +9,7 @@ import CommitteeSection from './components/CommitteeCarousel';
 import Pricing from './components/Pricing';
 import Sponsors, { SponsorsList, SponsorshipCTA } from './components/Sponsors';
 import Footer from './components/Footer';
+import Gallery from './components/Gallery';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
         {/* 3. Programação técnica */}
         <Program />
         
+        {/* 3.5. Fotos do Evento */}
+        <Gallery />
+
         {/* 4. Local do evento (Movido para cá) */}
         <Location />
 

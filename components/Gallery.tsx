@@ -2,16 +2,16 @@ import React from 'react';
 
 const Gallery: React.FC = () => {
   // TODO: Substitua pelo link real do seu Google Drive
-  const googleDriveLink = "https://drive.google.com/drive/u/0/folders/1PYRYPXiz_bCsO4cx93DDmwnakj2rTKA9"; 
+  const googleDriveLink = "https://drive.google.com/drive/u/0/folders/1l4WtMXvkie2r8yLsn8upk-RRA0gax61l"; 
 
   // Imagens genéricas usadas apenas para criar o efeito visual de mosaico borrado
   const placeholderImages = [
-    '/Imgs/Banner_Site.png',
-    '/Imgs/Banner_Site.png',
-    '/Imgs/Banner_Site.png',
-    '/Imgs/Banner_Site.png',
-    '/Imgs/Banner_Site.png',
-    '/Imgs/Banner_Site.png',
+    '/Imgs/Workshop&Tutorial 2026 - Dia 1 - Foto  (445).jpg',
+    '/Imgs/Workshop&Tutorial 2026 - Dia 1 - Foto  (448).jpg',
+    '/Imgs/Workshop&Tutorial 2026 - Dia 2 - Foto   (168).jpg',
+    '/Imgs/Workshop&Tutorial 2026 - Dia 2 - Foto   (169).jpg',
+    '/Imgs/Workshop&Tutorial 2026 - Dia 2 - Foto   (41).jpg',
+    '/Imgs/Workshop&Tutorial 2026 - Dia 1 - Foto  (404).jpg',
   ];
 
   return (

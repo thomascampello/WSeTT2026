@@ -31,10 +31,10 @@ const Gallery: React.FC = () => {
 
         <div className="relative group rounded-2xl overflow-hidden shadow-2xl">
           {/* Mosaico Borrado */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 p-4 bg-gray-100 blur-sm group-hover:blur-md transition-all duration-500 opacity-60">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 p-4 bg-gray-100 transition-all duration-500">
             {placeholderImages.map((src, index) => (
               <div key={index} className="aspect-video bg-gray-300 rounded-lg overflow-hidden">
-                <img src={src} alt="Mosaico Galeria" className="w-full h-full object-cover opacity-50" />
+                <img src={src} alt="Mosaico Galeria" className="w-full h-full object-cover" />
               </div>
             ))}
           </div>
